@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 R's Sustainability DM</title>
+    <link rel="stylesheet" href="dm.css">
+</head>
+<body>
+ <header>    
+        <div class="logo">
+            <img src="short logo.png" alt="Barter Exchange Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="indexnew.html">Home</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="contactus.html">Contact</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+
+        <!-- Search Bar and Login -->
+        <div class="header-actions">
+            <div class="search-bar">
+                <input type="text" placeholder="Search..." id="search">
+                <button type="button">Search</button>
+            </div>
+            <a href="login.html" class="login-btn">Login</a>
+        </div>
+            </header>
+
+
+            <!-- DM Chat Section -->
+<div class="dm-container">
+    <div class="header">Sustainability Chat: 3 R's - Reduce, Reuse, Recycle</div>
+    
+    <!-- Instruction Section -->
+    <div class="instructions">
+        <p><strong>How to Use:</strong></p>
+        <ul>
+            <li>Use the keyword <strong>"order"</strong> to place an order.</li>
+            <li>Use the keyword <strong>"suggestion"</strong> to share your ideas or feedback.</li>
+            <li>Use the keyword <strong>"report"</strong> to report an issue.</li>
+            <li>For general inquiries, type your message, and we’ll assist you.</li>
+        </ul>
+    </div>
+
+    <div class="message-area" id="message-area">
+        <!-- Messages will be displayed here -->
+    </div>
+    <div class="input-area">
+        <input type="text" id="message-input" placeholder="Share your thoughts on sustainability..." />
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+      <!-- Footer Section -->
+    <div class="footer">
+        <p>&copy; 2024 R3Trade. All rights reserved.</p>
+        <p><a href="terms-of-service.html">Privacy Policy & Terms of Service</a></p>
+        <p>Learn more about sustainability and recycling in India at the <a href="https://www.india.gov.in/spotlight/recycling-waste" target="_blank">Indian Government's Official Portal</a></p>
+    </div>
+
+    <script>
+        // Initialize the system message for the page
+        const systemMessage = `"Thank you for choosing us! Please mention the product detail and your exact address for pickup to place your order."`;
+
+        // Function to display system message
+        function displayMessage(message, type) {
+            const messageArea = document.getElementById('message-area');
+            const newMessage = document.createElement('div');
+            newMessage.classList.add('message');
+            newMessage.classList.add(type); // user or system
+            newMessage.textContent = message;
+            messageArea.appendChild(newMessage);
+
+            // Scroll to the bottom after new message is added
+            messageArea.scrollTop = messageArea.scrollHeight;
+        }
+
+        // Initial system message
+        displayMessage(systemMessage, 'system');
+
+        // Send message function
+        function sendMessage() {
+            const input = document.getElementById('message-input');
+            const message = input.value.trim();
+
+            if (message !== "") {
+                displayMessage(message, 'user');
+                input.value = ''; // clear input field
+                respondToMessage(message);
+            }
+        }
+
+        // Simple response function based on user message
+        function respondToMessage(userMessage) {
+            let response = '';
+
+            if (userMessage.toLowerCase().includes('order')) {
+    response = "Please share the details, including the product name and other necessary information, to place your order.";
+} else if (userMessage.toLowerCase().includes('suggestion')) {
+    response = "Thanks for sharing your suggestion! We will surely consider implementing it. If possible, could you provide more details about the artist and product?";
+} else if (userMessage.toLowerCase().includes('report')) {
+    response = "Thank you for bringing this to our attention. We will inspect it and take the necessary action.";
+} else {
+    response = "Thanks for sharing! Keep up the good work in promoting sustainability.";
+}
+
+            displayMessage(response, 'system');
+        }
+    </script>
+</body>
+</html>

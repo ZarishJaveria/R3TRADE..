@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate Waste Materials</title>
+    <link rel="stylesheet" href="donate.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+    <div class="logo">
+        <img src="short logo.png" alt="Barter Exchange Logo">
+    </div>
+    <nav>
+        <ul>
+            <li><a href="indexnew.html">Home</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="contactus.html">Contact</a></li>
+            <li><a href="cart.html">Cart</a></li>
+        </ul>
+    </nav>
+
+    <!-- Search Bar and Login -->
+    <div class="header-actions">
+        <div class="search-bar">
+            <input type="text" placeholder="Search..." id="search">
+            <button type="button">Search</button>
+        </div>
+        <a href="login.html" class="login-btn">Login</a>
+    </div>
+        </header>
+
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h2> Donate Your Waste for a Better Tomorrow</h2>
+        <p>Turn your waste into a resource for artists and innovators. Embrace sustainability through the 3 R's: Reduce, Reuse, Recycle.
+        </p>
+    </div>
+</section>
+
+    <main>
+        <section id="donate-section">
+            <h2>Contribute Your Waste</h2>
+            <p>Donate raw or finished waste products that can be repurposed by artists and others to create something new.</p>
+
+            <form id="donation-form">
+                <label for="material-type">Type of Waste Material:</label>
+                <select id="material-type" required>
+                    <option value="">Select material type</option>
+                    <option value="paper">Paper</option>
+                    <option value="plastic">Plastic</option>
+                    <option value="metal">Metal</option>
+                    <option value="glass">Glass</option>
+                    <option value="fabric">Fabric</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <div id="other-material" style="display: none;">
+                    <label for="other-description">Describe the material:</label>
+                    <input type="text" id="other-description" placeholder="e.g., old books, bottle caps">
+                </div>
+
+                <label for="quantity">Quantity (approx.):</label>
+                <input type="text" id="quantity" placeholder="e.g., 5 kg, 10 items" required>
+
+                <label for="donor-name">Your Name:</label>
+                <input type="text" id="donor-name" placeholder="Enter your name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+
+                <label for="pickup">Pickup Address (if applicable):</label>
+                <textarea id="pickup" rows="3" placeholder="Enter your address"></textarea>
+
+                <button type="submit">Donate</button>
+            </form>
+
+            <div id="thank-you" style="display: none;">
+                <h3>Thank you for your contribution!</h3>
+                <p>Your waste will find new life in the hands of artists and innovators.</p>
+            </div>
+        </section>
+    </main>
+
+   <!-- Footer Section -->
+   <footer>
+    <p>&copy; 2024 R3Trade. All rights reserved.</p>
+    <p><a href="terms-of-service.html">Privacy Policy & Term Of Services</a>
+        
+</footer>
+</body>
+</html>

@@ -1,0 +1,271 @@
+/* General Styles */
+.body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+h1, h2, h3 {
+    color: #444;
+}
+
+p {
+    color: #666;
+}
+
+/* Header Styles */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #4CAF50;
+   
+    padding: 20px;
+    position: relative;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    height: 100px; /* Replace 100px with the height of the h1 */
+}
+
+.logo img {
+    max-height: 50px; /* Adjust to your desired size */
+    width: auto; /* Keeps the aspect ratio intact */
+}
+
+header h1 {
+    color: #fff;
+    margin: 0;
+}
+
+nav ul li a.active {
+    color: #ff9800;  /* Highlight active link with a distinctive color */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    font-weight: bold;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.search-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input[type="text"] {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 200px;
+}
+
+.search-bar button {
+    background-color: #ff9800;
+    border: none;
+    padding: 8px 12px;
+    margin-left: 5px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #e68900;
+}
+
+/* Increased size and repositioned login button */
+.login-btn {
+    background-color: #ff9800;
+    padding: 8px 12px; /* Match padding with search button */
+    margin-left: 20px;
+    border-radius: 5px; /* Matching border-radius with search button */
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #e68900;
+}
+
+/* Masonry Layout for Recycle Page */
+.recycle-page h2 {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 28px;
+    color: #333;
+}
+
+/* Masonry Grid */
+.recycle-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 20px;
+    margin: 40px auto;
+    max-width: 1200px;
+}
+
+.item {
+    position: relative;
+    overflow: hidden;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+
+.item img {
+    width: 100%;
+    height: 200px;
+    display: block;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.item p {
+    margin-top: 14px;
+    color: black;
+    font-size: 18px;
+    text-align: center;
+}
+
+/* CSS: Hidden Elements Ko Clickable Banane Ke Liye */
+.hidden.extra {
+    display: block; /* display: none ki bajaye block */
+    opacity: 0; /* Element invisible hai, par clickable hai */
+    height: 0; /* Space nahi lega page pe */
+    overflow: hidden;
+    pointer-events: auto; /* Make sure it can still be clicked */
+}
+
+
+/* Responsive Layout for Smaller Screens */
+@media (max-width: 768px) {
+    .recycle-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .recycle-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+footer a {
+    color: #ff9800;
+}
+
+footer p {
+    margin: 5px 0;
+} 
+/* No Results & Explore Section */
+.no-results {
+    display: none;
+    text-align: center;
+    color: red;
+    font-size: 18px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* Explore Section Styling */
+.explore-section {
+    text-align: center;  /* Centers the text */
+    margin-top: 20px;
+    color: black;  /* Changes text color to black */
+    font-size: 18px; /* Adjust size if needed */
+    font-weight: bold;
+}
+
+#browse-again {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #ff9800; /* Orange button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+#browse-again:hover {
+    background-color: #e68900;
+}
+#suggestion-box {
+    position: absolute;  /* Makes it float below the search bar */
+    top: 100%; /* Pushes it below the search bar */
+    left: 0;
+    width: 100%;  /* Same width as search bar */
+    background-color: white;
+    border: none;  /* Removes any border */
+    border-radius: 5px;
+    box-shadow: none; /* Removes shadow */
+    z-index: 1000; /* Ensures it stays above other elements */
+    display: none; /* Initially hidden */
+}
+
+#suggestion-box:empty {
+    display: none; /* Hides the box when there are no suggestions */
+}
+
+#suggestion-box li {
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-size: 14px;
+    list-style: none; /* Removes bullet points */
+}
+
+#suggestion-box li:hover {
+    background: #f0f0f0;
+}
+

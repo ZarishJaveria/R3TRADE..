@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recycle and Donate - Barter Exchange</title>
+  <link rel="stylesheet" href="xchangestyle.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  
+  <style>
+    .btn {
+        color: white;
+        border: none;
+        background-color: chocolate;
+        cursor: pointer;
+        padding: 10px 15px;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 5px;
+    }
+    .btn:hover {
+        background-color: green;
+    }
+    .btn a {
+        text-decoration: none;
+        color: white;
+    }
+
+    /* Wishlist Heart Icon Styles */
+    .wishlist-icon {
+        font-size: 24px;
+        color: #ddd;
+        cursor: pointer;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        transition: color 0.3s;
+            /* Add a thin black border directly to the heart shape */
+    -webkit-text-stroke: 1px black; /* Adds a thin black outline */
+}
+    .wishlist-icon.added {
+        color: #e74c3c;
+    }
+
+    .no-results {
+        color: red;
+        font-size: 18px;
+        text-align: center;
+        display: none;
+        margin-top: 10px;
+    }
+    
+        /* Toast Message Styles */
+        .toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            font-size: 17px;
+            opacity: 0;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+        .toast.show {
+            visibility: visible;
+            opacity: 1;
+        }
+
+</style>
+
+   <script src="navbar.js"></script>
+  <script src="add-to-cart.js"></script>
+
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <div class="logo">
+      <img src="short logo.png" alt="Barter Exchange Logo">
+      
+    </div>
+    <nav class="navbar">
+      <ul>
+        <li><a href="indexnew.html">Home</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="contactus.html">Contact</a></li>
+        <li><a href="cart.html">Cart</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <div class="search-bar">
+        <input type="text" placeholder="Search..." id="search" autocomplete="off">
+        <button type="button" id="search-btn">Search</button>
+      </div>
+      <a href="login.html" class="login-btn">Login</a>
+    </div>
+  </header>
+
+<!-- Recycle and Donate Section -->
+<section class="recycle-page">
+  <h2>Exchange Products</h2>
+  <p class="no-results">No products found.</p>
+  
+  <div class="recycle-grid">
+    <!-- Product Cards with Wishlist Icons -->
+    <div class="item" data-id="1" data-name="Wooden Cupboard" data-price="4500" data-image="cupboardxchange.jpeg" data-description="A sturdy and elegant wooden cupboard, perfect for home or office storage.">
+        <img src="cupboardxchange.jpeg" alt="Wooden Cupboard">
+        <i class="fa fa-heart wishlist-icon" onclick="toggleWishlist(1)"></i>
+        <p><strong>Wooden Cupboard</strong><br>Price - ₹4,500 Rs.<br>Free Delivery<br>
+            <button class="btn" data-name="Wooden Cupboard" data-price="4500" data-image="cupboardxchange.jpeg">Add to Cart</button>
+        </p>
+    </div>
+
+    <div class="item" data-id="2" data-name="Storage Rack" data-price="2300" data-image="rackxchange.jpeg" data-description="A durable storage rack with multiple shelves, ideal for organizing essentials.">
+        <img src="rackxchange.jpeg" alt="Storage Rack">
+        <i class="fa fa-heart wishlist-icon" onclick="toggleWishlist(2)"></i>
+        <p><strong>Storage Rack</strong><br>Price - ₹2,300 Rs.<br>Free Delivery<br>
+            <button class="btn" data-name="Storage Rack" data-price="2300" data-image="rackxchange.jpeg">Add to Cart</button>
+        </p>
+    </div>
+
+    <div class="item" data-id="3" data-name="Television Set" data-price="7000" data-image="telexchange.jpeg" data-description="A high-definition television set with excellent picture quality and sound.">
+        <img src="telexchange.jpeg" alt="Television Set">
+        <i class="fa fa-heart wishlist-icon" onclick="toggleWishlist(3)"></i>
+        <p><strong>Television Set</strong><br>Price - ₹7,000 Rs.<br>Free Delivery<br>
+            <button class="btn" data-name="Television Set" data-price="7000" data-image="telexchange.jpeg">Add to Cart</button>
+        </p>
+    </div>
+
+    <div class="item" data-id="4" data-name="Toy Car" data-price="850" data-image="carxchange.jpg" data-description="A fun and colorful toy car, perfect for kids and collectors.">
+        <img src="carxchange.jpg" alt="Toy Car">
+        <i class="fa fa-heart wishlist-icon" onclick="toggleWishlist(4)"></i>
+        <p><strong>Toy Car</strong><br>Price - ₹850 Rs.<br>Free Delivery<br>
+            <button class="btn" data-name="Toy Car" data-price="850" data-image="carxchange.jpg">Add to Cart</button>
+        </p>
+    </div>
+
+    <div class="item" data-id="5" data-name="Sewing Machine" data-price="5200" data-image="sewingxchange1.jpg" data-description="A reliable sewing machine for stitching, embroidery, and fabric crafting.">
+        <img src="sewingxchange1.jpg" alt="Sewing Machine">
+        <i class="fa fa-heart wishlist-icon" onclick="toggleWishlist(5)"></i>
+        <p><strong>Sewing Machine</strong><br>Price - ₹5,200 Rs.<br>Free Delivery<br>
+            <button class="btn" data-name="Sewing Machine" data-price="5200" data-image="sewingxchange1.jpg">Add to Cart</button>
+        </p>
+    </div>
+
+    <div class="item" data-id="6" data-name="Office Chair" data-price="1500" data-image="chairxchange.jpg" data-description="A comfortable and ergonomic office chair for long working hours.">
+        <img src="chairxchange.jpg" alt="Office Chair">
+        <i class="fa fa-heart wishlist-icon" onclick="toggleWishlist(6)"></i>
+        <p><strong>Office Chair</strong><br>Price - ₹1,500 Rs.<br>Free Delivery<br>
+            <button class="btn" data-name="Office Chair" data-price="1500" data-image="chairxchange.jpg">Add to Cart</button>
+        </p>
+    </div>
+
+    <div class="item" data-id="7" data-name="Gas Stove" data-price="3400" data-image="gasxchange.jpg" data-description="A high-quality gas stove with multiple burners for efficient cooking.">
+        <img src="gasxchange.jpg" alt="Gas Stove">
+        <i class="fa fa-heart wishlist-icon" onclick="toggleWishlist(7)"></i>
+        <p><strong>Gas Stove</strong><br>Price - ₹3,400 Rs.<br>Free Delivery<br>
+            <button class="btn" data-name="Gas Stove" data-price="3400" data-image="gasxchange.jpg">Add to Cart</button>
+        </p>
+    </div>
+
+    <div class="item" data-id="8" data-name="Wall Clock" data-price="700" data-image="clockschange.jpg" data-description="A stylish wall clock to enhance your home or office décor.">
+        <img src="clockschange.jpg" alt="Wall Clock">
+        <i class="fa fa-heart wishlist-icon" onclick="toggleWishlist(8)"></i>
+        <p><strong>Wall Clock</strong><br>Price - ₹700 Rs.<br>Free Delivery<br>
+            <button class="btn" data-name="Wall Clock" data-price="700" data-image="clockschange.jpg">Add to Cart</button>
+        </p>
+    </div>
+
+    <div class="item hidden extra" data-id="9" data-name="Telephone" data-price="1200" data-image="phone.jpg" data-description="A classic telephone set with vintage aesthetics and great functionality.">
+        <img src="phone.jpg" alt="Telephone">
+        <i class="fa fa-heart wishlist-icon" onclick="toggleWishlist(9)"></i>
+        <p><strong>Telephone</strong><br>Price - ₹1,200 Rs.<br>Free Delivery<br>
+            <button class="btn" data-name="Telephone" data-price="1200" data-image="phone.jpg">Add to Cart</button>
+        </p>
+    </div>
+
+    <div class="item hidden extra" data-id="10" data-name="Typewriter" data-price="2500" data-image="type.jpg" data-description="A vintage typewriter in working condition, great for collectors and writers.">
+        <img src="type.jpg" alt="Typewriter">
+        <i class="fa fa-heart wishlist-icon" onclick="toggleWishlist(10)"></i>
+        <p><strong>Typewriter</strong><br>Price - ₹2,500 Rs.<br>Free Delivery<br>
+            <button class="btn" data-name="Typewriter" data-price="2500" data-image="type.jpg">Add to Cart</button>
+        </p>
+    </div>
+
+    <div class="item hidden extra" data-id="11" data-name="Bag" data-price="800" data-image="bag3.jpg" data-description="A stylish and spacious bag suitable for travel and daily use.">
+        <img src="bag3.jpg" alt="Bag">
+        <i class="fa fa-heart wishlist-icon" onclick="toggleWishlist(11)"></i>
+        <p><strong>Bag</strong><br>Price - ₹800 Rs.<br>Free Delivery<br>
+            <button class="btn" data-name="Bag" data-price="800" data-image="bag3.jpg">Add to Cart</button>
+        </p>
+    </div>
+
+    <div class="item hidden extra" data-id="12" data-name="Glass" data-price="150" data-image="glass.jpg" data-description="A set of elegant glassware, perfect for serving beverages.">
+        <img src="glass.jpg" alt="Glass">
+        <i class="fa fa-heart wishlist-icon" onclick="toggleWishlist(12)"></i>
+        <p><strong>Glass</strong><br>Price - ₹150 Rs.<br>Free Delivery<br>
+            <button class="btn" data-name="Glass" data-price="150" data-image="glass.jpg">Add to Cart</button>
+        </p>
+    </div>
+</div>
+
+</section>
+
+<!-- No Products Found Message and Explore Section -->
+<p class="no-results">No products found.</p>
+<div class="explore-section">
+    <p>Explore other products below</p>
+    <button id="browse-again">Continue Exploring</button>
+</div>
+
+
+  <!-- Footer Section -->
+  <footer>
+    <p>&copy; 2024 R3Trade. All rights reserved.</p>
+    <p><a href="terms-of-service.html">Privacy Policy & Terms of Service</a></p>
+  </footer>
+  <!-- Toast Notification -->
+<div id="toast" class="toast"></div>
+
+<script>
+    // Wishlist Management
+    const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    
+    function toggleWishlist(productId) {
+    const item = document.querySelector(`.item[data-id="${productId}"]`);
+    const name = item.getAttribute('data-name');
+    const price = item.getAttribute('data-price');
+    const image = item.getAttribute('data-image');
+    
+    const product = { id: productId, name, price, image };
+    const icon = item.querySelector('.wishlist-icon');
+    const index = wishlist.findIndex(item => item.id === productId);
+
+    if (index > -1) {
+        wishlist.splice(index, 1);
+        icon.classList.remove('added');
+        showToast(`${name} removed from wishlist!`);
+    } else {
+        wishlist.push(product);
+        icon.classList.add('added');
+        showToast(`${name} added to wishlist!`, true);
+    }
+
+    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+}
+
+// Toast Notification Function
+function showToast(message, showWishlistLink = false) {
+    const toast = document.getElementById("toast");
+    toast.innerHTML = message;
+
+    if (showWishlistLink) {
+        toast.innerHTML += ` <a href="wishlist.html" style="color: #4CAF50; text-decoration: underline;">Click here to go to wishlist</a>`;
+    }
+
+    toast.className = "toast show";
+    setTimeout(() => {
+        toast.className = toast.className.replace("show", "");
+    }, 3000);
+}
+    
+    // Initialize Icons and Add to Cart Buttons
+    document.addEventListener('DOMContentLoaded', () => {
+        // Initialize Wishlist Icons
+        document.querySelectorAll('.item').forEach(item => {
+            const id = parseInt(item.getAttribute('data-id'));
+            if (wishlist.some(product => product.id === id)) {
+                item.querySelector('.wishlist-icon').classList.add('added');
+            }
+        });
+
+        // Add Event Listeners to Add to Cart Buttons
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const productName = button.getAttribute('data-name');
+                showToast(`${productName} added to cart successfully!`);
+            });
+        });
+        
+// Initialize Recently Viewed Products from localStorage
+const viewedItems = JSON.parse(localStorage.getItem('recentlyViewed')) || [];
+
+// Function to add a product to recently viewed
+function addToRecentlyViewed(parent) {
+    if (!parent) return;
+
+    const product = {
+        id: parent.getAttribute('data-id'),
+        name: parent.getAttribute('data-name'),
+        price: parent.getAttribute('data-price'),
+        image: parent.getAttribute('data-image'),
+        link: window.location.pathname + '#' + parent.getAttribute('data-id')
+    };
+
+    console.log('🆕 Product data:', product);
+
+    // Check if product already exists in the recently viewed list
+    const existsIndex = viewedItems.findIndex(p => p.id === product.id);
+    if (existsIndex > -1) {
+        // Move existing item to the top (most recently viewed)
+        viewedItems.splice(existsIndex, 1);
+    }
+
+    // Add the product to the top of the list
+    viewedItems.unshift(product);
+
+    // Limit the recently viewed list to 5 items
+    if (viewedItems.length > 5) viewedItems.pop();
+
+    // Save to localStorage
+    localStorage.setItem('recentlyViewed', JSON.stringify(viewedItems));
+
+    console.log(`✅ Added "${product.name}" to Recently Viewed`);
+
+    // Mark the item as recently viewed (ensure class is added)
+    parent.classList.add('recently-viewed');
+}
+
+// Add Event Listener for All Items (Regular and Hidden Extra)
+document.querySelectorAll('.item img, .item p strong').forEach(element => {
+    element.style.cursor = 'pointer'; // Make clickable
+
+    element.addEventListener('click', () => {
+        const parent = element.closest('.item'); // Get product container
+        addToRecentlyViewed(parent);
+    });
+});
+
+// Ensure hidden extra items are also tracked
+document.querySelectorAll('.item.hidden.extra img, .item.hidden.extra p strong').forEach(element => {
+    element.style.cursor = 'pointer'; // Make clickable
+
+    element.addEventListener('click', () => {
+        const parent = element.closest('.item'); // Get hidden product container
+        if (parent) {
+            addToRecentlyViewed(parent);
+        }
+    });
+});
+
+// Mark existing recently viewed items when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.item').forEach(item => {
+        const id = item.getAttribute('data-id');
+        if (viewedItems.some(product => product.id === id)) {
+            item.classList.add('recently-viewed');
+        }
+    });
+});
+
+// Double-click Event Handling
+document.querySelectorAll('.item').forEach(item => {
+    item.addEventListener('dblclick', function () {
+        const id = item.getAttribute('data-id');
+        const name = encodeURIComponent(item.getAttribute('data-name'));
+        const price = item.getAttribute('data-price');
+        const image = item.getAttribute('data-image');
+        const description = encodeURIComponent(item.getAttribute('data-description'));
+
+        if (item.classList.contains('recently-viewed')) {
+            console.log(`🔄 Double-click on Recently Viewed Item: ${name}`);
+            // Perform special action for recently viewed items if needed
+        } else {
+            console.log(`➡️ Redirecting to product page: ${name}`);
+            window.location.href = `productpage.html?id=${id}&name=${name}&price=${price}&image=${image}&description=${description}`;
+        }
+    });
+});
+
+
+// Add event listener for double-click on each product item
+document.querySelectorAll('.item').forEach(item => {
+  item.addEventListener('dblclick', function() {
+    // Get product data attributes
+    const id = item.getAttribute('data-id');
+    const name = encodeURIComponent(item.getAttribute('data-name'));
+    const price = item.getAttribute('data-price');
+    const image = item.getAttribute('data-image');
+    const description = encodeURIComponent(item.getAttribute('data-description'));
+
+    // Redirect to the productpage.html with dynamic query parameters and source=xchange
+    window.location.href = `productpage.html?id=${id}&name=${name}&price=${price}&image=${image}&description=${description}&source=xchange`;
+  });
+});
+
+
+    });
+</script>
+    
+  <script src="exchange-search.js"></script>
+</body>
+</html>

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell - R3 Trade</title>
+    <link rel="stylesheet" href="sellstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .btn {
+            color: white;
+            border: none;
+            background-color: chocolate;
+            cursor: pointer;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background-color: green;
+        }
+        .btn a {
+            text-decoration: none;
+            color: white;
+        }
+
+        
+    /* Wishlist Heart Icon Styles */
+    .wishlist-icon {
+        font-size: 24px;
+        color: #ddd;
+        cursor: pointer;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        transition: color 0.3s;
+            /* Add a thin black border directly to the heart shape */
+    -webkit-text-stroke: 1px black; /* Adds a thin black outline */
+}
+    .wishlist-icon.added {
+        color: #e74c3c;
+    }
+
+        .no-results {
+            color: red;
+            font-size: 18px;
+            text-align: center;
+            display: none;
+            margin-top: 10px;
+        }
+        
+        /* Toast Message Styles */
+        .toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            font-size: 17px;
+            opacity: 0;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+        .toast.show {
+            visibility: visible;
+            opacity: 1;
+        }
+
+    </style>
+    <script src="navbar.js"></script>
+    <script src="add-to-cart.js"></script>
+
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <img src="short logo.png" alt="Barter Exchange Logo">
+        </div>
+        <nav class="navbar"> <!-- Add class="navbar" here -->
+            <ul>
+              <li><a href="indexnew.html">Home</a></li>
+              <li><a href="aboutus.html">About Us</a></li>
+              <li><a href="contactus.html">Contact</a></li>
+              <li><a href="cart.html">Cart</a></li>
+            </ul>
+          </nav>
+          
+        <!-- Search Bar and Login -->
+        <div class="header-actions">
+            <div class="search-bar">
+                <input type="text" placeholder="Search..." id="search" autocomplete="off">
+                <ul id="suggestion-box"></ul>
+                <button type="button">Search</button>
+            </div>
+            <a href="login.html" class="login-btn">Login</a>
+        </div>
+    </header>
+    <!-- Recycle and Donate Section -->
+    <section class="recycle-page">
+        <h2> Sell Products</h2>
+        <p class="no-results">No products found.</p>  <!-- Message for no search results -->
+        
+        <div class="recycle-grid">
+            <div class="item" data-id="1" data-name="Cement" data-price="750" data-image="cementsell.jpeg" data-description="Premium quality cement bags, freshly purchased and in excellent condition. Perfect for construction projects—grab them at a great deal!">
+                <i class="fas fa-heart wishlist-icon" onclick="toggleWishlist('1')"></i>
+                <img src="cementsell.jpeg" alt="Cement">
+                <p><strong>Cement</strong><br>
+                    Price - ₹750 Rs.<br>
+                    Free Delivery<br>
+                    <button class="btn" 
+                        data-name="Cement" 
+                        data-price="750" 
+                        data-image="cementsell.jpeg">
+                        Add to Cart
+                    </button>
+                </p>
+            </div>
+        
+            <div class="item" data-id="2" data-name="Bricks" data-price="450" data-image="bricksell.jpeg" data-description="Strong, durable bricks ideal for construction and home projects. Limited stock available—don't miss out on this bargain!">
+                <i class="fas fa-heart wishlist-icon" onclick="toggleWishlist('2')"></i>
+                <img src="bricksell.jpeg" alt="Bricks">
+                <p><strong>Bricks</strong><br>
+                    Price - ₹450 Rs.<br>
+                    Free Delivery<br>
+                    <button class="btn" 
+                        data-name="Bricks" 
+                        data-price="450" 
+                        data-image="bricksell.jpeg">
+                        Add to Cart
+                    </button>
+                </p>
+            </div>
+        
+            <div class="item" data-id="3" data-name="Shoes" data-price="1200" data-image="shoessell.jpeg" data-description="Trendy and comfortable shoes in excellent condition. Hardly worn—step into style at a fantastic price!">
+                <i class="fas fa-heart wishlist-icon" onclick="toggleWishlist('3')"></i>
+                <img src="shoessell.jpeg" alt="Shoes">
+                <p><strong>Shoes</strong><br>
+                    Price - ₹1200 Rs.<br>
+                    Free Delivery<br>
+                    <button class="btn" 
+                        data-name="Shoes" 
+                        data-price="1200" 
+                        data-image="shoessell.jpeg">
+                        Add to Cart
+                    </button>
+                </p>
+            </div>
+        
+            <div class="item" data-id="4" data-name="Wood" data-price="2000" data-image="woodsell.jpeg" data-description="Freshly cut, high-quality wood, perfect for furniture, DIY projects, or home improvements. Get yours at an amazing price!">
+                <i class="fas fa-heart wishlist-icon" onclick="toggleWishlist('4')"></i>
+                <img src="woodsell.jpeg" alt="Wood">
+                <p><strong>Wood</strong><br>
+                    Price - ₹2000 Rs.<br>
+                    Free Delivery<br>
+                    <button class="btn" 
+                        data-name="Wood" 
+                        data-price="2000" 
+                        data-image="woodsell.jpeg">
+                        Add to Cart
+                    </button>
+                </p>
+            </div>
+        
+            <div class="item" data-id="5" data-name="Sofa" data-price="4500" data-image="sofasell.jpg" data-description="Spacious, cozy, and stylish sofa in great condition. Upgrade your living space today at a budget-friendly price!">
+                <i class="fas fa-heart wishlist-icon" onclick="toggleWishlist('5')"></i>
+                <img src="sofasell.jpg" alt="Sofa">
+                <p><strong>Sofa</strong><br>
+                    Price - ₹4500 Rs.<br>
+                    Free Delivery<br>
+                    <button class="btn" 
+                        data-name="Sofa" 
+                        data-price="4500" 
+                        data-image="sofasell.jpg">
+                        Add to Cart
+                    </button>
+                </p>
+            </div>
+        
+            <div class="item" data-id="6" data-name="Books" data-price="300" data-image="booksell.jpg" data-description="A collection of well-maintained books in great condition. Perfect for book lovers at a fraction of the original cost!">
+                <i class="fas fa-heart wishlist-icon" onclick="toggleWishlist('6')"></i>
+                <img src="booksell.jpg" alt="Books">
+                <p><strong>Books</strong><br>
+                    Price - ₹300 Rs.<br>
+                    Free Delivery<br>
+                    <button class="btn" 
+                        data-name="Books" 
+                        data-price="300" 
+                        data-image="booksell.jpg">
+                        Add to Cart
+                    </button>
+                </p>
+            </div>
+        
+            <div class="item" data-id="7" data-name="Tempo" data-price="50000" data-image="temposell.jpg" data-description="Reliable and well-maintained tempo for sale. Ideal for transport, business, or logistics. A great deal you can't miss!">
+                <i class="fas fa-heart wishlist-icon" onclick="toggleWishlist('7')"></i>
+                <img src="temposell.jpg" alt="Tempo">
+                <p><strong>Tempo</strong><br>
+                    Price - ₹50000 Rs.<br>
+                    Free Delivery<br>
+                    <button class="btn" 
+                        data-name="Tempo" 
+                        data-price="50000" 
+                        data-image="temposell.jpg">
+                        Add to Cart
+                    </button>
+                </p>
+            </div>
+        
+            <div class="item" data-id="8" data-name="Grain" data-price="800" data-image="grainsell.jpg" data-description="Fresh, high-quality grains available at a price lower than the market. Stock up while supplies last!">
+                <i class="fas fa-heart wishlist-icon" onclick="toggleWishlist('8')"></i>
+                <img src="grainsell.jpg" alt="Grain">
+                <p><strong>Grain</strong><br>
+                    Price - ₹800 Rs.<br>
+                    Free Delivery<br>
+                    <button class="btn" 
+                        data-name="Grain" 
+                        data-price="800" 
+                        data-image="grainsell.jpg">
+                        Add to Cart
+                    </button>
+                </p>
+            </div>
+        
+            <div class="item hidden extra" data-id="9" data-name="Bag" data-price="350" data-image="bag3.jpg" data-description="Stylish and durable travel bag with ample space. Perfect for trips, daily use, or office essentials—grab yours now!">
+                <i class="fas fa-heart wishlist-icon" onclick="toggleWishlist('9')"></i>
+                <img src="bag3.jpg" alt="Bag">
+                <p><strong>Bag</strong><br>
+                    Price - ₹350 Rs.<br>
+                    Free Delivery<br>
+                    <button class="btn" 
+                        data-name="Bag" 
+                        data-price="350" 
+                        data-image="bag3.jpg">
+                        Add to Cart
+                    </button>
+                </p>
+            </div>
+        
+            <div class="item hidden extra" data-id="10" data-name="Pouch" data-price="150" data-image="bag2.jpg" data-description="Compact and elegant makeup pouch, designed for organizing your beauty essentials. A must-have accessory at an unbeatable price!">
+                <i class="fas fa-heart wishlist-icon" onclick="toggleWishlist('10')"></i>
+                <img src="bag2.jpg" alt="Pouch">
+                <p><strong>Pouch</strong><br>
+                    Price - ₹150 Rs.<br>
+                    Free Delivery<br>
+                    <button class="btn" 
+                        data-name="Pouch" 
+                        data-price="150" 
+                        data-image="bag2.jpg">
+                        Add to Cart
+                    </button>
+                </p>
+            </div>
+        
+            <div class="item hidden extra" data-id="11" data-name="Old Cloth" data-price="100" data-image="cloth.jpg" data-description="Gently used clothes in good condition. Affordable and stylish—ideal for everyday wear. Limited stock, shop now!">
+                <i class="fas fa-heart wishlist-icon" onclick="toggleWishlist('11')"></i>
+                <img src="cloth.jpg" alt="Cloth">
+                <p><strong>Old Cloth</strong><br>
+                    Price - ₹100 Rs.<br>
+                    Free Delivery<br>
+                    <button class="btn" 
+                        data-name="Old Cloth" 
+                        data-price="100" 
+                        data-image="cloth.jpg">
+                        Add to Cart
+                    </button>
+                </p>
+            </div>
+        
+       <div class="item hidden extra" data-id="12" data-name="Perfume" data-price="950" data-image="perfume.jpg" data-description="Branded luxury perfume, recently purchased and barely used. Experience a premium fragrance at a fraction of the price!">
+                <i class="fas fa-heart wishlist-icon" onclick="toggleWishlist('12')"></i>
+                <img src="perfume.jpg" alt="Perfume">
+                <p><strong>Perfume</strong><br>
+                    Price - ₹950 Rs.<br>
+                    Free Delivery<br>
+                    <button class="btn" 
+                        data-name="Perfume" 
+                        data-price="950" 
+                        data-image="perfume.jpg">
+                        Add to Cart
+                    </button>
+                </p>
+            </div>
+        </div>
+        
+    </section>
+    
+<!-- No Products Found Message and Explore Section -->
+<p class="no-results">No products found.</p>
+<div class="explore-section">
+  <p>Explore other products below </p>
+  <button id="browse-again">Continue Exploring</button>
+</div>
+</section>
+
+
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 R3Trade. All rights reserved.</p>
+        <p><a href="terms-of-service.html">Privacy Policy & Terms of Service</a></p>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script>
+
+ // Wishlist Management
+ const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    
+    function toggleWishlist(productId) {
+    const item = document.querySelector(`.item[data-id="${productId}"]`);
+    const name = item.getAttribute('data-name');
+    const price = item.getAttribute('data-price');
+    const image = item.getAttribute('data-image');
+    
+    const product = { id: productId, name, price, image };
+    const icon = item.querySelector('.wishlist-icon');
+    const index = wishlist.findIndex(item => item.id === productId);
+
+    if (index > -1) {
+        wishlist.splice(index, 1);
+        icon.classList.remove('added');
+        showToast(`${name} removed from wishlist!`);
+    } else {
+        wishlist.push(product);
+        icon.classList.add('added');
+        showToast(`${name} added to wishlist!`, true);
+    }
+
+    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+}
+
+// Toast Notification Function
+function showToast(message, showWishlistLink = false) {
+    const toast = document.getElementById("toast");
+    toast.innerHTML = message;
+
+    if (showWishlistLink) {
+        toast.innerHTML += ` <a href="wishlist.html" style="color: #4CAF50; text-decoration: underline;">Click here to go to wishlist</a>`;
+    }
+
+    toast.className = "toast show";
+    setTimeout(() => {
+        toast.className = toast.className.replace("show", "");
+    }, 3000);
+}
+    
+    // Initialize Icons and Add to Cart Buttons
+    document.addEventListener('DOMContentLoaded', () => {
+        // Initialize Wishlist Icons
+        document.querySelectorAll('.item').forEach(item => {
+            const id = parseInt(item.getAttribute('data-id'));
+            if (wishlist.some(product => product.id === id)) {
+                item.querySelector('.wishlist-icon').classList.add('added');
+            }
+        });
+
+        // Add Event Listeners to Add to Cart Buttons
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const productName = button.getAttribute('data-name');
+                showToast(`${productName} added to cart successfully!`);
+            });
+        });
+        
+ // Initialize Recently Viewed Products from localStorage
+const viewedItems = JSON.parse(localStorage.getItem('recentlyViewed')) || [];
+
+// Function to add a product to recently viewed
+function addToRecentlyViewed(parent) {
+    if (!parent) return;
+
+    const product = {
+        id: parent.getAttribute('data-id'),
+        name: parent.getAttribute('data-name'),
+        price: parent.getAttribute('data-price'),
+        image: parent.getAttribute('data-image'),
+        link: window.location.pathname + '#' + parent.getAttribute('data-id')
+    };
+
+    console.log('🆕 Product data:', product);
+
+    // Check if product already exists in the recently viewed list
+    const existsIndex = viewedItems.findIndex(p => p.id === product.id);
+    if (existsIndex > -1) {
+        // Move existing item to the top (most recently viewed)
+        viewedItems.splice(existsIndex, 1);
+    }
+
+    // Add the product to the top of the list
+    viewedItems.unshift(product);
+
+    // Limit the recently viewed list to 5 items
+    if (viewedItems.length > 5) viewedItems.pop();
+
+    // Save to localStorage
+    localStorage.setItem('recentlyViewed', JSON.stringify(viewedItems));
+
+    console.log(`✅ Added "${product.name}" to Recently Viewed`);
+
+    // Mark the item as recently viewed (ensure class is added)
+    parent.classList.add('recently-viewed');
+}
+
+// Add Event Listener for All Items (Regular and Hidden Extra)
+document.querySelectorAll('.item img, .item p strong').forEach(element => {
+    element.style.cursor = 'pointer'; // Make clickable
+
+    element.addEventListener('click', () => {
+        const parent = element.closest('.item'); // Get product container
+        addToRecentlyViewed(parent);
+    });
+});
+
+// Ensure hidden extra items are also tracked
+document.querySelectorAll('.item.hidden.extra img, .item.hidden.extra p strong').forEach(element => {
+    element.style.cursor = 'pointer'; // Make clickable
+
+    element.addEventListener('click', () => {
+        const parent = element.closest('.item'); // Get hidden product container
+        if (parent) {
+            addToRecentlyViewed(parent);
+        }
+    });
+});
+
+// Mark existing recently viewed items when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.item').forEach(item => {
+        const id = item.getAttribute('data-id');
+        if (viewedItems.some(product => product.id === id)) {
+            item.classList.add('recently-viewed');
+        }
+    });
+});
+
+// Double-click Event Handling
+document.querySelectorAll('.item').forEach(item => {
+    item.addEventListener('dblclick', function () {
+        const id = item.getAttribute('data-id');
+        const name = encodeURIComponent(item.getAttribute('data-name'));
+        const price = item.getAttribute('data-price');
+        const image = item.getAttribute('data-image');
+        const description = encodeURIComponent(item.getAttribute('data-description'));
+
+        if (item.classList.contains('recently-viewed')) {
+            console.log(`🔄 Double-click on Recently Viewed Item: ${name}`);
+            // Perform special action for recently viewed items if needed
+        } else {
+            console.log(`➡️ Redirecting to product page: ${name}`);
+            window.location.href = `productpage.html?id=${id}&name=${name}&price=${price}&image=${image}&description=${description}`;
+        }
+    });
+});
+
+
+// Add event listener for double-click on each product item
+document.querySelectorAll('.item').forEach(item => {
+  item.addEventListener('dblclick', function() {
+    // Get product data attributes
+    const id = item.getAttribute('data-id');
+    const name = encodeURIComponent(item.getAttribute('data-name'));
+    const price = item.getAttribute('data-price');
+    const image = item.getAttribute('data-image');
+    const description = encodeURIComponent(item.getAttribute('data-description'));
+
+    // Redirect to the productpage.html with source=sell
+    window.location.href = `productpage.html?id=${id}&name=${name}&price=${price}&image=${image}&description=${description}&source=sell`;
+  });
+});
+
+
+    });
+    
+    </script>
+
+    <script src="sell-search.js"></script>  <!-- Search script -->
+</body>
+</html>

@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upcycle Products</title>
+    <link rel="stylesheet" href="upcycle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        .message{
+            color: white;
+            border: none;
+            background-color: chocolate;
+            cursor: pointer;
+        
+        }
+        .message:hover{
+        background-color: green;
+        }
+        
+    /* Wishlist Heart Icon Styles */
+    .wishlist-icon {
+        font-size: 24px;
+        color: #ddd;
+        cursor: pointer;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        transition: color 0.3s;
+            /* Add a thin black border directly to the heart shape */
+    -webkit-text-stroke: 1px black; /* Adds a thin black outline */
+}
+    .wishlist-icon.added {
+        color: #e74c3c;
+    }
+
+  /* Toast Message Styles */
+  .toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            font-size: 17px;
+            opacity: 0;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+        .toast.show {
+            visibility: visible;
+            opacity: 1;
+        }
+
+    </style>
+    <script src="navbar.js"></script>
+</head>
+<body>
+    <!-- Header Section -->
+    
+    <header>
+        <div class="logo">
+            <img src="short logo.png" alt="Barter Exchange Logo">
+            
+        </div>
+        <nav class="navbar"> <!-- Add class="navbar" here -->
+            <ul>
+              <li><a href="indexnew.html">Home</a></li>
+              <li><a href="aboutus.html">About Us</a></li>
+              <li><a href="contactus.html">Contact</a></li>
+              <li><a href="cart.html">Cart</a></li>
+            </ul>
+          </nav>
+          
+      <!-- Search Bar and Login -->
+      <div class="header-actions">
+        <div class="search-bar">
+            <input type="text" placeholder="Search..." id="search" autocomplete="off">
+            <ul id="suggestion-box"></ul>
+            <button type="button">Search</button>
+        </div>
+        <a href="login.html" class="login-btn">Login</a>
+    </div>
+
+
+    </header>
+           
+   <script src="upcycle-search.js"></script>
+    
+   <section class="recycle-page">
+    <h2>Upcycled Products</h2>
+    <div class="recycle-grid">
+        <div class="item" data-id="1" data-name="Bottle Upcycle" data-required="Plastic bottles" 
+        data-artist="Mira Singh" 
+        data-artist-description="Mira Singh is a talented eco-artist specializing in repurposing plastic bottles into home decor and utility items.">   
+        <img src="plastic.jpg" alt="Bottle Upcycle">
+            <i class="fa fa-heart wishlist-icon" onclick="toggleWishlist(1)"></i>
+            <p><strong>Bottle Upcycle</strong><br>Required: Plastic bottles.<br>
+                Artist Name: Mira Singh.
+                <button class="message"><a href="dm.html">Direct Message</a></button>
+            </p>
+        </div>
+
+        <div class="item" data-id="2" data-name="Denim Hanger" data-required="Denim" 
+        data-artist="Sadiya Sadaf" 
+        data-artist-description="Sadiya Sadaf is an expert in denim recycling, turning old jeans into creative and functional home accessories.">
+               <img src="jeans2.jpg" alt="Denim Hanger">
+            <i class="fa fa-heart wishlist-icon" onclick="toggleWishlist(2)"></i>
+            <p><strong>Denim Hanger</strong><br>Required: Denim.<br>
+                Artist Name: Sadiya Sadaf.
+                <button class="message"><a href="dm.html">Direct Message</a></button>
+            </p>
+        </div>
+
+        <div class="item" data-id="3" data-name="Upcycled Denim" data-required="Denim" 
+        data-artist="Sadiya Sadaf" 
+        data-artist-description="Passionate about zero-waste fashion, Sadiya repurposes discarded denim to craft stylish and durable products.">
+               <img src="jeansnew.jpg" alt="Upcycled Denim">
+            <i class="fa fa-heart wishlist-icon" onclick="toggleWishlist(3)"></i>
+            <p><strong>Upcycled Denim</strong><br>Required: Denim.<br>
+                Artist Name: Sadiya Sadaf.
+                <button class="message"><a href="dm.html">Direct Message</a></button>
+            </p>
+        </div>
+
+        <div class="item" data-id="4" data-name="Tyre Planter" data-required="Tyre" 
+        data-artist="Mohan Lal" 
+        data-artist-description="Mohan Lal is known for converting used tyres into innovative planters, helping urban gardeners create green spaces.">
+               <img src="tyre.jpg" alt="Tyre Planter">
+            <i class="fa fa-heart wishlist-icon" onclick="toggleWishlist(4)"></i>
+            <p><strong>Tyre Planter</strong><br>Required: Tyre.<br>
+                Artist Name: Mohan Lal.
+                <button class="message"><a href="dm.html">Direct Message</a></button>
+            </p>
+        </div>
+
+        <div class="item" data-id="5" data-name="Pen Holder" data-required="Cold Drink Can" 
+        data-artist="Riyaz Ahmed Khan" 
+        data-artist-description="Riyaz Ahmed Khan creatively upcycles aluminum cans into stylish pen holders, promoting eco-friendly desk organization.">
+               <img src="CANE1.jpg" alt="Pen Holder">
+            <i class="fa fa-heart wishlist-icon" onclick="toggleWishlist(5)"></i>
+            <p><strong>Pen Holder</strong><br>Required: Cold Drink Can.<br>
+                Artist Name: Riyaz Ahmed Khan.
+                <button class="message"><a href="dm.html">Direct Message</a></button>
+            </p>
+        </div>
+
+        <div class="item" data-id="6" data-name="Tyre Clock" data-required="Cycle Tyre" 
+        data-artist="Kamlesh Soni" 
+        data-artist-description="Kamlesh Soni transforms old cycle tyres into functional and artistic wall clocks, blending sustainability with aesthetics.">
+               <img src="tyre1.jpg" alt="Tyre Clock">
+            <i class="fa fa-heart wishlist-icon" onclick="toggleWishlist(6)"></i>
+            <p><strong>Tyre Clock</strong><br>Required: Cycle Tyre.<br>
+                Artist Name: Kamlesh Soni.
+                <button class="message"><a href="dm.html">Direct Message</a></button>
+            </p>
+        </div>
+
+        <div class="item" data-id="7" data-name="Can Table" data-required="Cold Drink Can" 
+        data-artist="Aditi Kapoor" 
+        data-artist-description="Aditi Kapoor specializes in upcycling cold drink cans into functional furniture, proving waste can be stylish.">
+               <img src="cane.jpg" alt="Can Table">
+            <i class="fa fa-heart wishlist-icon" onclick="toggleWishlist(7)"></i>
+            <p><strong>Can Table</strong><br>Required: Cold Drink Can.<br>
+                Artist Name: Aditi Kapoor.
+                <button class="message"><a href="dm.html">Direct Message</a></button>
+            </p>
+        </div>
+
+        <div class="item" data-id="8" data-name="Tissue Box" data-required="Kids Car" 
+        data-artist="Anam Khan" 
+        data-artist-description="Anam Khan designs unique tissue boxes using recycled toy cars, giving discarded plastic a new purpose.">
+               <img src="toycar.jpg" alt="Tissue Box">
+            <i class="fa fa-heart wishlist-icon" onclick="toggleWishlist(8)"></i>
+            <p><strong>Tissue Box</strong><br>Required: Kids Car.<br>
+                Artist Name: Anam Khan.
+                <button class="message"><a href="dm.html">Direct Message</a></button>
+            </p>
+        </div>
+
+        <div class="item hidden extra" data-id="9" data-name="Upcycled Plastic" data-required="Denim" 
+        data-artist="Sadiya Sadaf" 
+        data-artist-description="Sadiya Sadaf brings discarded plastics back to life by crafting aprons and accessories.">
+               <img src="apron.jpg" alt="Upcycled Plastic">
+            <i class="fa fa-heart wishlist-icon" onclick="toggleWishlist(9)"></i>
+            <p><strong>Upcycled Plastic</strong><br>Required: Denim.<br>
+                Artist Name: Sadiya Sadaf.
+                <button class="message"><a href="dm.html">Direct Message</a></button>
+            </p>
+        </div>
+
+        <div class="item hidden extra" data-id="10" data-name="Denim Hanger" data-required="Denim" 
+        data-artist="Sadiya Sadaf" 
+        data-artist-description="A second variant of Sadiya’s denim hanger design, showcasing sustainable craftsmanship.">
+               <img src="bottle2.jpg" alt="Denim Hanger">
+            <i class="fa fa-heart wishlist-icon" onclick="toggleWishlist(10)"></i>
+            <p><strong>Denim Hanger</strong><br>Required: Denim.<br>
+                Artist Name: Sadiya Sadaf.
+                <button class="message"><a href="dm.html">Direct Message</a></button>
+            </p>
+        </div>
+
+        <div class="item hidden extra" data-id="11" data-name="Upcycled Bottles" data-required="Denim" 
+        data-artist="Sadiya Sadaf" 
+        data-artist-description="Sadiya’s expertise extends to turning waste bottles into decorative flower vases, proving eco-friendly can be elegant.">
+               <img src="flower vase.jpg" alt="Upcycled Bottles">
+            <i class="fa fa-heart wishlist-icon" onclick="toggleWishlist(11)"></i>
+            <p><strong>Upcycled Bottles</strong><br>Required: Denim.<br>
+                Artist Name: Sadiya Sadaf.
+                <button class="message"><a href="dm.html">Direct Message</a></button>
+            </p>
+        </div>
+
+        <div class="item hidden extra" data-id="12" data-name="Denim Planter" data-required="Denim" 
+        data-artist="Sadiya Sadaf" 
+        data-artist-description="Denim scraps find new life in Sadiya’s handcrafted planters, blending eco-conscious living with interior decor.">
+               <img src="planter hanger.jpg" alt="Denim Planter">
+            <i class="fa fa-heart wishlist-icon" onclick="toggleWishlist(12)"></i>
+            <p><strong>Denim Planter</strong><br>Required: Denim.<br>
+                Artist Name: Sadiya Sadaf.
+                <button class="message"><a href="dm.html">Direct Message</a></button>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- No Products Found Message and Explore Section -->
+<p class="no-results">No products found.</p>
+<div class="explore-section">
+  <p>Explore other products below </p>
+  <button id="browse-again">Continue Exploring</button>
+</div>
+</section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 R3Trade. All rights reserved.</p>
+        <p><a href="terms-of-service.html">Privacy Policy & Term and Services</a>
+    </footer>
+   
+
+     <!-- Toast Notification -->
+<div id="toast" class="toast"></div>
+
+<script>
+    
+// Load wishlist from localStorage
+const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+// Function to toggle wishlist status
+function toggleWishlist(productId) {
+    const item = document.querySelector(`.item[data-id="${productId}"]`);
+    if (!item) return;
+
+    const icon = item.querySelector('.wishlist-icon');
+    const name = item.getAttribute('data-name') || "Unknown Item";
+    const price = item.getAttribute('data-price') || "Depend on the req."; 
+    const image = item.querySelector('img') ? item.querySelector('img').getAttribute('src') : "default.jpg";
+
+    const product = { id: Number(productId), name, price, image };
+
+    const index = wishlist.findIndex(item => item.id === product.id);
+    
+    if (index > -1) {
+        wishlist.splice(index, 1);
+        icon.classList.remove('added'); // Remove red color
+        showToast(`${name} removed from wishlist!`);
+    } else {
+        wishlist.push(product);
+        icon.classList.add('added'); // Add red color
+        showToast(`${name} added to wishlist!`, true);
+    }
+
+    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+}
+
+// Function to initialize wishlist UI on page load
+function initializeWishlist() {
+    document.querySelectorAll('.wishlist-icon').forEach(icon => {
+        const item = icon.closest('.item');
+        const productId = Number(item.getAttribute('data-id'));
+
+        if (wishlist.some(product => product.id === productId)) {
+            icon.classList.add('added'); // Ensure the red color persists
+        }
+    });
+}
+
+// Call function on page load
+document.addEventListener("DOMContentLoaded", initializeWishlist);
+
+
+      
+
+// Toast Notification Function
+function showToast(message, showWishlistLink = false) {
+    const toast = document.getElementById("toast");
+    toast.innerHTML = message;
+
+    if (showWishlistLink) {
+        toast.innerHTML += ` <a href="wishlist.html" style="color: #4CAF50; text-decoration: underline;">Click here to go to wishlist</a>`;
+    }
+
+    toast.className = "toast show";
+    setTimeout(() => {
+        toast.className = toast.className.replace("show", "");
+    }, 3000);
+}
+
+// Initialize Recently Viewed Products from localStorage
+const viewedItems = JSON.parse(localStorage.getItem('recentlyViewed')) || [];
+
+// Function to add a product to recently viewed
+function addToRecentlyViewed(parent) {
+    if (!parent) return;
+
+    const product = {
+        id: parent.getAttribute('data-id'),
+        name: parent.getAttribute('data-name'),
+        price: parent.getAttribute('data-price'),
+        image: parent.querySelector('img') ? parent.querySelector('img').getAttribute('src') : "default.jpg",
+        link: window.location.pathname + '#' + parent.getAttribute('data-id')
+    };
+
+    console.log('🆕 Product data:', product);
+
+    // Check if product already exists in the recently viewed list
+    const existsIndex = viewedItems.findIndex(p => p.id === product.id);
+    if (existsIndex > -1) {
+        // Move existing item to the top (most recently viewed)
+        viewedItems.splice(existsIndex, 1);
+    }
+
+    // Add the product to the top of the list
+    viewedItems.unshift(product);
+
+    // Limit the recently viewed list to 5 items
+    if (viewedItems.length > 5) viewedItems.pop();
+
+    // Save to localStorage
+    localStorage.setItem('recentlyViewed', JSON.stringify(viewedItems));
+
+    console.log(`✅ Added "${product.name}" to Recently Viewed`);
+
+    // Mark the item as recently viewed (ensure class is added)
+    parent.classList.add('recently-viewed');
+}
+
+// Add Event Listener for All Items (Regular and Hidden Extra)
+document.querySelectorAll('.item img, .item p strong').forEach(element => {
+    element.style.cursor = 'pointer'; // Make clickable
+
+    element.addEventListener('click', () => {
+        const parent = element.closest('.item'); // Get product container
+        addToRecentlyViewed(parent);
+    });
+});
+
+// Ensure hidden extra items are also tracked
+document.querySelectorAll('.item.hidden.extra img, .item.hidden.extra p strong').forEach(element => {
+    element.style.cursor = 'pointer'; // Make clickable
+
+    element.addEventListener('click', () => {
+        const parent = element.closest('.item'); // Get hidden product container
+        if (parent) {
+            addToRecentlyViewed(parent);
+        }
+    });
+});
+
+// Mark existing recently viewed items when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.item').forEach(item => {
+        const id = item.getAttribute('data-id');
+        if (viewedItems.some(product => product.id === id)) {
+            item.classList.add('recently-viewed');
+        }
+    });
+});
+
+// Store all products for "Explore More" functionality
+const allProducts = [];
+document.querySelectorAll('.item').forEach(item => {
+    allProducts.push({
+        id: item.getAttribute('data-id'),
+        name: item.getAttribute('data-name'),
+        image: item.querySelector('img').getAttribute('src'),
+        required: item.getAttribute('data-required'),
+        artist: item.getAttribute('data-artist'),
+        artistDescription: item.getAttribute('data-artist-description')
+    });
+});
+localStorage.setItem('allProducts', JSON.stringify(allProducts));
+
+// Add event listener to all product items for double-click (open product page)
+document.querySelectorAll('.item').forEach(item => {
+    item.addEventListener('dblclick', (event) => {
+        const parent = event.currentTarget;
+        if (!parent) return;
+
+        // Prepare product object
+        const product = {
+            id: parent.getAttribute('data-id'),
+            name: parent.getAttribute('data-name'),
+            image: parent.querySelector('img').getAttribute('src'),
+            required: parent.getAttribute('data-required'),
+            artist: parent.getAttribute('data-artist'),
+            artistDescription: parent.getAttribute('data-artist-description'),
+            link: `upcycleprod.html?id=${parent.getAttribute('data-id')}`
+        };
+
+        // Save selected product details to localStorage
+        localStorage.setItem('selectedProduct', JSON.stringify(product));
+
+        // Save to Recently Viewed (Avoid duplicates)
+        const exists = viewedItems.some(p => p.id === product.id);
+        if (!exists) {
+            viewedItems.unshift(product);
+            if (viewedItems.length > 5) viewedItems.pop(); // Limit to 5 items
+            localStorage.setItem('recentlyViewed', JSON.stringify(viewedItems));
+        }
+
+        // Redirect to the product details page
+        window.location.href = product.link;
+    });
+});
+
+</script>
+ 
+</body>
+</html>

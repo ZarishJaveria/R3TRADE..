@@ -1,0 +1,215 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+h1, h2, h3 {
+    color: #444;
+}
+
+p {
+    color: #666;
+}
+
+/* Header Styles */
+header {
+    
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #4CAF50;
+       
+        padding: 20px;
+        position: relative;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    height: 100px; /* Replace 100px with the height of the h1 */
+}
+
+.logo img {
+    max-height: 50px; /* Adjust to your desired size */
+    width: auto; /* Keeps the aspect ratio intact */
+}
+
+header h1 {
+    color: #fff;
+    margin: 0;
+}
+
+nav ul li a.active {
+    color: #ff9800;  /* Highlight active link with a distinctive color */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    font-weight: bold;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input[type="text"] {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 200px;
+}
+
+.search-bar button {
+    background-color: #ff9800;
+    border: none;
+    padding: 8px 12px;
+    margin-left: 5px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #e68900;
+}
+
+/* Increased size and repositioned login button */
+.login-btn {
+    background-color: #ff9800;
+    padding: 8px 12px; /* Match padding with search button */
+    margin-left: 20px;
+    border-radius: 5px; /* Matching border-radius with search button */
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #241703;
+}
+
+/* Hero Section Styles */
+.hero {
+    background-image: linear-gradient(to right, #6de972, #0b8611cb);
+    margin-top: 60px;
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+
+main {
+    padding: 20px;
+}
+
+#donate-section {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#donate-section h2 {
+    margin-bottom: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-top: 10px;
+}
+
+form input, form select, form button {
+    margin-top: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+form button {
+    background-color: #ff9800;
+    color: white;
+    cursor: pointer;
+    margin-top: 15px;
+    border: none;
+}
+
+form button:hover {
+    background-color:#155724;
+}
+
+#thank-you {
+    text-align: center;
+    padding: 20px;
+    background-color: #d1e7dd;
+    color: #155724;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+footer a {
+    color: #ff9800;
+}
+
+footer p {
+    margin: 5px 0;
+}

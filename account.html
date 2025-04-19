@@ -1,0 +1,466 @@
+<!-- Account Page (account.html) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account - R3 Trade</title>
+    <link rel="stylesheet" href="account.css">
+<!-- Styles for Horizontal Scrolling and Uniform Images -->
+<style>
+    #recently-viewed {
+        margin-top: 20px;
+    }
+
+    /* Horizontal Scroll */
+    .recently-viewed-container {
+        overflow-x: auto;
+        white-space: nowrap;
+        padding: 10px 0;
+    }
+
+    .scrollable-list {
+        display: flex;
+        gap: 10px;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    /* Product Card */
+    .product-card {
+        display: inline-block;
+        width: 120px;
+        text-align: center;
+        background: #f9f9f9;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+    }
+
+    /* Image Wrapper for Consistent Size */
+    .image-wrapper {
+        width: 100%;
+        aspect-ratio: 1; /* Makes a square container */
+        overflow: hidden;
+        border-radius: 5px;
+        background-color: #eaeaea; /* Placeholder background */
+    }
+
+    .image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Maintains aspect ratio */
+    }
+
+    /* Product Name */
+    .product-card p {
+        font-size: 14px;
+        margin-top: 5px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* Scrollbar Styling */
+    .recently-viewed-container::-webkit-scrollbar {
+        height: 6px;
+    }
+    .recently-viewed-container::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 5px;
+    }
+    .recently-viewed-container::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+</style>
+
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="short logo.png" alt="Barter Exchange Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="indexnew.html">Home</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="contactus.html">Contact</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="account.html">Account</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="account-page">
+        <aside class="account-sidebar">
+            <ul>
+                <li><a href="cart.html"><strong>Your Orders</strong></a></li>
+                <li><a href="wishlist.html"><strong>Wishlist</strong></a></li>
+                <li><a href="address.html"><strong>Address Book</strong></a></li>
+                <li><a href="settings.html"><strong>Account Settings</strong></a></li>
+                <li><a href="help.html"><strong>Help</strong></a></li>
+            </ul>
+        </aside>
+        <section class="account-content">
+            <h2>Your Account</h2>
+            <div id="orders">
+                <h3>Your Orders</h3>
+                <p>No recent orders found.</p>
+            </div>
+
+            <!-- Recently Viewed Products Section -->
+<div id="recently-viewed">
+    <h3>Recently Viewed Products</h3>
+    <div class="recently-viewed-container">
+        <ul id="recently-viewed-list" class="scrollable-list"></ul>
+    </div>
+</div>
+
+<div id="address">
+    <h3>Address Book</h3>
+    
+    <!-- Address Display Area -->
+    <p id="addressDisplay">MG Road Close to Smt. Maherbanu college, Akola 444001</p>
+    
+    <!-- Address Edit Form (Initially Hidden) -->
+    <div id="editAddressForm" style="display: none;">
+        <textarea id="addressInput" rows="3" style="width: 100%;"></textarea><br>
+        <button id="saveAddressBtn">Save</button>
+        <button id="cancelEditBtn">Cancel</button>
+    </div>
+
+    <!-- Edit Button -->
+    <button id="editAddressBtn">Edit Address</button>
+</div>
+</div>
+                 <div id="settings">
+                    <h3>Account Settings</h3>
+                
+                    <!-- 🟢 View Password Section -->
+                    <button id="viewPasswordBtn">View Password</button>
+                    <p id="viewPassword" style="display: none;"></p>
+                
+                    <!-- 🟢 Change Password Section -->
+                    <button id="changePasswordBtn">Change Password</button>
+                    <div id="passwordForm" style="display: none;">
+                        <p>Change Your Password:</p>
+                        
+                        <label for="oldPassword">Old Password:</label><br>
+                        <input type="password" id="oldPassword" placeholder="Enter old password"><br><br>
+                        
+                        <label for="newPassword">New Password:</label><br>
+                        <input type="password" id="newPassword" placeholder="Enter new password"><br><br>
+                        
+                        <label for="confirmPassword">Confirm Password:</label><br>
+                        <input type="password" id="confirmPassword" placeholder="Re-enter new password"><br><br>
+                        
+                        <button id="savePasswordBtn">Save Password</button>
+                        <button id="cancelPasswordBtn">Cancel</button>
+                
+                        <p id="passwordMessage"></p>
+                    </div>
+                
+                    <!-- 🟢 Manage Notifications Section -->
+                    <button id="manageNotificationsBtn">Manage Notifications</button>
+                    <div id="notificationForm" style="display: none;">
+                        <p>Notification Preferences:</p>
+                        
+                        <label>
+                            <input type="checkbox" id="emailNotifications">
+                            Email Notifications
+                        </label><br>
+                
+                        <label>
+                            <input type="checkbox" id="smsNotifications">
+                            SMS Notifications
+                        </label><br>
+                
+                        <button id="saveNotificationsBtn">Save Preferences</button>
+                        <button id="cancelNotificationsBtn">Cancel</button>
+                
+                        <p id="notificationMessage"></p>
+                    </div>
+                </div>
+                
+                <div id="help">
+                    <h3>Need Help?</h3>
+                    
+                    <!-- Display Help Message -->
+                    <p id="helpMessage">For additional support, contact us at <a href="mailto:support@r3trade.com">support@r3trade.com</a>.</p>
+                    
+                    <!-- Help Request Button -->
+                    <button id="requestHelpBtn">Request Help</button>
+                    
+                    <!-- Help Form (Initially Hidden) -->
+                    <div id="helpForm" style="display: none;">
+                        <p>How can we assist you?</p>
+                        
+                        <label for="helpTopic">Select Topic:</label><br>
+                        <select id="helpTopic">
+                            <option value="order">Order Issue</option>
+                            <option value="account">Account Assistance</option>
+                            <option value="payment">Payment Problem</option>
+                            <option value="other">Other</option>
+                        </select><br><br>
+                
+                        <label for="helpDetails">Describe Your Issue:</label><br>
+                        <textarea id="helpDetails" rows="3" placeholder="Provide details about your issue..." style="width: 100%;"></textarea><br><br>
+                
+                        <button id="submitHelpBtn">Submit Request</button>
+                        <button id="cancelHelpBtn">Cancel</button>
+                
+                        <p id="helpMessageDisplay"></p>
+                    </div>
+                </div>
+                
+        </section>
+    </main>
+
+   <!-- Footer Section -->
+   <footer>
+    <p>&copy; 2024 R3Trade. All rights reserved.</p>
+    <p><a href="terms-of-service.html">Privacy Policy & Term Of Services</a>
+        
+</footer>
+
+<!-- 🟢 Combined Script for All Functionalities -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    
+        // 🟢 1. Recently Viewed Products
+        const products = JSON.parse(localStorage.getItem('recentlyViewed')) || [];
+        const list = document.getElementById('recently-viewed-list');
+        
+        if (list) {
+            if (products.length === 0) {
+                list.innerHTML = '<p>No recently viewed products.</p>';
+            } else {
+                list.innerHTML = products.map(product => `
+                    <li class="product-card">
+                        <a href="${product.link}">
+                            <div class="image-wrapper">
+                                <img src="${product.image}" alt="${product.name}">
+                            </div>
+                            <p>${product.name}</p>
+                        </a>
+                    </li>
+                `).join('');
+            }
+        }
+    
+        // 🟢 2. Edit Address Functionality
+        const addressDisplay = document.getElementById('addressDisplay');
+        const editAddressForm = document.getElementById('editAddressForm');
+        const addressInput = document.getElementById('addressInput');
+        const editAddressBtn = document.getElementById('editAddressBtn');
+        const saveAddressBtn = document.getElementById('saveAddressBtn');
+        const cancelEditBtn = document.getElementById('cancelEditBtn');
+    
+        if (addressDisplay) {
+            const savedAddress = localStorage.getItem('userAddress') || addressDisplay.textContent;
+            addressDisplay.textContent = savedAddress;
+    
+            editAddressBtn.addEventListener('click', () => {
+                editAddressForm.style.display = 'block';
+                addressDisplay.style.display = 'none';
+                editAddressBtn.style.display = 'none';
+                addressInput.value = addressDisplay.textContent;
+            });
+    
+            saveAddressBtn.addEventListener('click', () => {
+                const newAddress = addressInput.value.trim();
+                if (newAddress) {
+                    addressDisplay.textContent = newAddress;
+                    localStorage.setItem('userAddress', newAddress);
+                }
+                editAddressForm.style.display = 'none';
+                addressDisplay.style.display = 'block';
+                editAddressBtn.style.display = 'inline-block';
+            });
+    
+            cancelEditBtn.addEventListener('click', () => {
+                editAddressForm.style.display = 'none';
+                addressDisplay.style.display = 'block';
+                editAddressBtn.style.display = 'inline-block';
+            });
+        }
+    
+        // 🟢 3. View Password Functionality
+        const viewPasswordBtn = document.getElementById('viewPasswordBtn');
+        const viewPassword = document.getElementById('viewPassword');
+    
+        if (viewPasswordBtn) {
+            viewPasswordBtn.addEventListener('click', () => {
+                const savedPassword = localStorage.getItem('userPassword') || 'No password set.';
+                viewPassword.textContent = `Stored Password: ${savedPassword}`;
+                viewPassword.style.display = viewPassword.style.display === 'none' ? 'block' : 'none';
+            });
+        }
+    
+        // 🟢 4. Change Password Functionality
+        const changePasswordBtn = document.getElementById('changePasswordBtn');
+        const passwordForm = document.getElementById('passwordForm');
+        const oldPasswordInput = document.getElementById('oldPassword');
+        const newPasswordInput = document.getElementById('newPassword');
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+        const savePasswordBtn = document.getElementById('savePasswordBtn');
+        const cancelPasswordBtn = document.getElementById('cancelPasswordBtn');
+        const passwordMessage = document.getElementById('passwordMessage');
+    
+        if (changePasswordBtn) {
+            changePasswordBtn.addEventListener('click', () => {
+                passwordForm.style.display = 'block';
+                changePasswordBtn.style.display = 'none';
+            });
+    
+           savePasswordBtn.addEventListener('click', () => {
+    const oldPassword = oldPasswordInput.value.trim();
+    const newPassword = newPasswordInput.value.trim();
+    const confirmPassword = confirmPasswordInput.value.trim();
+    const storedPassword = localStorage.getItem('userPassword') || '';
+
+    console.log('Old Password:', oldPassword);
+    console.log('Stored Password:', storedPassword);
+
+    // Validation Checks
+    if (!oldPassword || !newPassword || !confirmPassword) {
+        passwordMessage.textContent = 'Please fill in all fields.';
+        passwordMessage.style.color = 'red';
+        console.log('Validation Failed: Empty Fields');
+        return;
+    }
+
+    if (oldPassword !== storedPassword) {
+        passwordMessage.textContent = 'Old password is incorrect!';
+        passwordMessage.style.color = 'red';
+        console.log('Validation Failed: Old Password Incorrect');
+        return;
+    }
+
+    if (newPassword !== confirmPassword) {
+        passwordMessage.textContent = 'New passwords do not match!';
+        passwordMessage.style.color = 'red';
+        console.log('Validation Failed: Passwords Do Not Match');
+        return;
+    }
+
+    // Set new password in localStorage
+    localStorage.setItem('userPassword', newPassword);
+    passwordMessage.textContent = 'Password changed successfully!';
+    passwordMessage.style.color = 'green';
+    console.log('Password Changed Successfully!');
+
+    // Clear input fields
+    oldPasswordInput.value = '';
+    newPasswordInput.value = '';
+    confirmPasswordInput.value = '';
+
+    // Keep the form visible for 2 seconds to show the success message
+    setTimeout(() => {
+        passwordForm.style.display = 'none';
+        changePasswordBtn.style.display = 'inline-block';
+        passwordMessage.textContent = ''; // Clear the message after hiding the form
+    }, 2000); // 2-second delay
+});
+
+
+            cancelPasswordBtn.addEventListener('click', () => {
+                passwordForm.style.display = 'none';
+                changePasswordBtn.style.display = 'inline-block';
+                passwordMessage.textContent = '';
+            });
+        }
+    
+        // 🟢 5. Manage Notifications Functionality
+        const manageNotificationsBtn = document.getElementById('manageNotificationsBtn');
+        const notificationForm = document.getElementById('notificationForm');
+        const emailNotifications = document.getElementById('emailNotifications');
+        const smsNotifications = document.getElementById('smsNotifications');
+        const saveNotificationsBtn = document.getElementById('saveNotificationsBtn');
+        const cancelNotificationsBtn = document.getElementById('cancelNotificationsBtn');
+        const notificationMessage = document.getElementById('notificationMessage');
+    
+        if (manageNotificationsBtn) {
+            manageNotificationsBtn.addEventListener('click', () => {
+                notificationForm.style.display = 'block';
+                manageNotificationsBtn.style.display = 'none';
+    
+                emailNotifications.checked = localStorage.getItem('emailNotifications') === 'true';
+                smsNotifications.checked = localStorage.getItem('smsNotifications') === 'true';
+            });
+    
+            saveNotificationsBtn.addEventListener('click', () => {
+                localStorage.setItem('emailNotifications', emailNotifications.checked);
+                localStorage.setItem('smsNotifications', smsNotifications.checked);
+                notificationMessage.textContent = 'Notification preferences saved successfully!';
+                notificationMessage.style.color = 'green';
+    
+                notificationForm.style.display = 'none';
+                manageNotificationsBtn.style.display = 'inline-block';
+            });
+    
+            cancelNotificationsBtn.addEventListener('click', () => {
+                notificationForm.style.display = 'none';
+                manageNotificationsBtn.style.display = 'inline-block';
+                notificationMessage.textContent = '';
+            });
+        }
+    
+        // 🟢 6. Need Help Section
+        const requestHelpBtn = document.getElementById('requestHelpBtn');
+        const helpForm = document.getElementById('helpForm');
+        const helpTopic = document.getElementById('helpTopic');
+        const helpDetails = document.getElementById('helpDetails');
+        const submitHelpBtn = document.getElementById('submitHelpBtn');
+        const cancelHelpBtn = document.getElementById('cancelHelpBtn');
+        const helpMessageDisplay = document.getElementById('helpMessageDisplay');
+        
+        if (requestHelpBtn) {
+            requestHelpBtn.addEventListener('click', () => {
+                helpForm.style.display = 'block';
+                requestHelpBtn.style.display = 'none';
+            });
+        }
+     // Show the help form
+    requestHelpBtn.addEventListener('click', () => {
+        helpForm.style.display = 'block';
+        requestHelpBtn.style.display = 'none';
+    });
+
+    // Handle help request submission
+    submitHelpBtn.addEventListener('click', () => {
+        const topic = helpTopic.value;
+        const details = helpDetails.value.trim();
+
+        if (!details) {
+            helpMessageDisplay.textContent = 'Please provide details about your issue.';
+            helpMessageDisplay.style.color = 'red';
+            return;
+        }
+
+        // Simulate sending a help request (in a real app, this would be a server call)
+        helpMessageDisplay.textContent = `Help request submitted for "${topic}". We will get back to you soon!`;
+        helpMessageDisplay.style.color = 'green';
+
+        // Reset form and display button again
+        helpTopic.value = 'order';
+        helpDetails.value = '';
+        helpForm.style.display = 'none';
+        requestHelpBtn.style.display = 'inline-block';
+    });
+
+    // Cancel help request
+    cancelHelpBtn.addEventListener('click', () => {
+        helpForm.style.display = 'none';
+        requestHelpBtn.style.display = 'inline-block';
+        helpMessageDisplay.textContent = '';
+    });
+
+
+    });
+    </script>
+    
+
+</body>
+</html>

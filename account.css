@@ -1,0 +1,199 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f5f5f5;
+}
+
+header {
+    background-color:  #4CAF50;
+    color: white;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+header .logo img {
+    max-height: 50px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+nav a:hover {
+    background-color: #f7db09;
+}
+
+/* Account Page Layout */
+.account-page {
+    display: flex;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.account-sidebar {
+    width: 200px;
+    background-color: #ecf0f1;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.account-sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.account-sidebar a {
+    color: #2c3e50;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.account-sidebar a:hover {
+    background-color: #bdc3c7;
+}
+
+.account-content {
+    flex: 1;
+    margin-left: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2, h3 {
+    color: #2c3e50;
+}
+
+button {
+    background-color: #4CAF50;    
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #eeb805;
+}
+
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+footer a {
+    color: #ff9800;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+/* 📱 Media Query for Header Responsiveness Without Breaking Design */
+@media (max-width: 768px) {
+
+    /* Make Header Elements Wrap Properly */
+    header {
+        flex-wrap: wrap;
+        padding: 10px;
+    }
+
+    /* Center and Wrap Navigation Menu */
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0;
+        gap: 10px;
+    }
+
+    /* Prevent Navigation Links from Overflowing */
+    nav a {
+        white-space: nowrap;
+    }
+}
+
+/* 📱 Mobile Specific Changes */
+@media (max-width: 480px) {
+
+    header {
+        padding: 10px;
+    }
+
+    nav a {
+        padding: 5px 8px;
+        font-size: 14px;
+    }
+}
+
+/* 📦 Fix for .account-content Box Not Showing Full Rectangle */
+.account-page {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 10px;
+    min-height: 80vh; /* Maintain minimum height */
+    box-sizing: border-box;
+}
+
+/* Ensure .account-content Fills Available Space */
+.account-content {
+    flex: 1;
+    min-width: 300px; /* Prevent shrinking too much on smaller screens */
+    margin-left: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* Include padding in the width/height */
+}
+
+/* On Mobile Devices, Make the Account Content Full Width */
+@media (max-width: 768px) {
+    .account-content {
+        margin-left: 0; /* Remove left margin */
+        width: 100%;
+        min-width: unset; /* Allow full width on small screens */
+    }
+
+    .account-sidebar {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+/* Optional: Ensure Full Height is Used */
+html, body {
+    height: 100%;
+}

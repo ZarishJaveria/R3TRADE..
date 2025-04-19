@@ -1,0 +1,194 @@
+/* 🌐 Basic Styles */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    z-index: 1000;
+}
+
+/* 🖼️ Logo Styles */
+.logo img {
+    max-width: 150px;
+    height: auto;
+    transition: max-width 0.3s ease;
+}
+
+/* 📍 Navbar Styles */
+nav {
+    position: relative;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: #f0f0f0;
+}
+
+/* ☰ Mobile Menu Button */
+.menu-toggle {
+    display: none;
+    background-color: #ff9800;
+    border: none;
+    padding: 10px;
+    font-size: 20px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* 🔍 Search Bar Styles */
+.search-bar {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-left: 20px;
+}
+
+.search-bar input[type="text"] {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 200px;
+}
+
+.search-bar button {
+    background-color: #ff9800;
+    border: none;
+    padding: 8px 12px;
+    margin-left: 5px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #e68900;
+}
+
+/* 🛍️ Login Button */
+.login-btn {
+    background-color: #ff9800;
+    padding: 8px 12px;
+    margin-left: 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #e68900;
+}
+
+/* 📑 Dropdown Styles */
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+    z-index: 100;
+}
+
+.default-options div,
+.search-suggestions div {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+
+.default-options div:hover,
+.search-suggestions div:hover {
+    background: #f0f0f0;
+}
+
+/* 🏷️ Most Popular Badge */
+.popular-badge {
+    font-size: 12px;
+    color: white;
+    background: red;
+    padding: 3px 6px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+/* 🚫 "No Results Found" */
+.no-results {
+    padding: 10px;
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* 📱 Mobile Styles */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px; /* Adjust according to your header height */
+        right: 0;
+        background-color: white;
+        padding: 20px;
+        border: 1px solid #ddd;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+    }
+
+    nav ul.active {
+        display: block;
+    }
+
+    nav a {
+        display: block;
+        padding: 10px 15px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    /* 🔍 Make Search Bar Responsive */
+    .search-bar input[type="text"] {
+        width: 100%;
+    }
+
+    /* 🖼️ Logo Resize for Mobile */
+    .logo img {
+        max-width: 100px;
+    }
+}

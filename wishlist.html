@@ -1,0 +1,176 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist - R3 Trade</title>
+    <link rel="stylesheet" href="common.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const wishlistContainer = document.getElementById('wishlist-container');
+            const modal = document.getElementById('confirmation-modal');
+            const confirmRemoveBtn = document.getElementById('confirm-remove');
+            const cancelRemoveBtn = document.getElementById('cancel-remove');
+            let itemToRemoveIndex = null;  
+
+            // Fetch wishlist items from localStorage
+            let wishlistItems = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+            function displayWishlist() {
+                wishlistContainer.innerHTML = '';
+
+                if (wishlistItems.length === 0) {
+                    wishlistContainer.innerHTML = '<p>Your wishlist is empty.</p>';
+                    return;
+                }
+
+                wishlistItems.forEach((item, index) => {
+                    const wishlistItem = document.createElement('div');
+                    wishlistItem.classList.add('wishlist-item');
+                    wishlistItem.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}" class="wishlist-image">
+                        <div class="wishlist-details">
+                            <h3>${item.name}</h3>
+                            <p>Price: ₹${item.price}</p>
+                            <button class="save-btn" data-index="${index}">Move to Cart</button>
+                            <button class="danger-btn remove-btn" data-index="${index}">Remove</button>
+                        </div>
+                    `;
+                    wishlistContainer.appendChild(wishlistItem);
+                });
+
+                // Attach event listener to all "Remove" buttons
+                document.querySelectorAll('.remove-btn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        itemToRemoveIndex = parseInt(this.getAttribute('data-index')); 
+                        modal.style.display = 'flex'; // Show confirmation modal
+                    });
+                });
+
+                // Attach event listener to all "Move to Cart" buttons
+                document.querySelectorAll('.save-btn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const index = parseInt(this.getAttribute('data-index'));
+                        moveToCart(index);
+                    });
+                });
+            }
+
+            // Remove item after confirmation
+            confirmRemoveBtn.addEventListener('click', function() {
+                if (itemToRemoveIndex !== null) {
+                    wishlistItems.splice(itemToRemoveIndex, 1);
+                    localStorage.setItem('wishlist', JSON.stringify(wishlistItems));
+                    displayWishlist();
+                    modal.style.display = 'none';
+                }
+            });
+
+            // Cancel remove
+            cancelRemoveBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+
+            // Close modal on clicking outside
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+
+            // Move item to cart
+            function moveToCart(index) {
+                alert(`${wishlistItems[index].name} has been moved to your cart.`);
+                wishlistItems.splice(index, 1);
+                localStorage.setItem('wishlist', JSON.stringify(wishlistItems));
+                displayWishlist();
+            }
+
+            displayWishlist();
+        });
+    </script>
+    <style>
+        /* Modal Styling */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            width: 300px;
+        }
+
+        .danger-btn {
+            background: red;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .cancel-btn {
+            background: gray;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="short logo.png" alt="R3 Trade Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="indexnew.html">Home</a></li>
+                <li><a href="account.html">Account</a></li>
+                <li><a href="wishlist.html" class="active">Wishlist</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="settings.html">Settings</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="wishlist-section">
+            <h1>Your Wishlist</h1>
+            <div id="wishlist-container" class="wishlist-container">
+                <!-- Wishlist items will be dynamically inserted here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmation-modal" class="modal">
+        <div class="modal-content">
+            <p>Are you sure you want to remove this item from your wishlist?</p>
+            <button id="confirm-remove" class="danger-btn">Yes, Remove</button>
+            <button id="cancel-remove" class="cancel-btn">Cancel</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 R3Trade. All rights reserved.</p>
+        <p><a href="terms-of-service.html">Privacy Policy & Terms of Service</a></p>
+    </footer>
+</body>
+</html>

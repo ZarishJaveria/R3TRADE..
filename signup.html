@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="signup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="navbar.js"></script>
+</head>
+<body>
+
+    <!-- Background Blur Effect of indexnew.html -->
+    <div class="background-container">
+        <iframe src="indexnew.html"></iframe>
+    </div>
+
+    <section id="signup">
+        <div class="signup-container">
+            <!-- 🔹 Signup Header (With Close Button) -->
+            <div class="signup-header">
+                <h2>Create an Account</h2>
+                <i class="fas fa-times close-signup" onclick="closeSignup()"></i> <!-- ❌ Close Button -->
+            </div>
+
+            <form id="signupForm">
+                <select id="userRole" required>
+                    <option value="">Select Role</option>
+                    <option value="customer">Customer</option>
+                    <option value="artist">Artist</option>
+                </select>
+                <input type="text" id="fullName" placeholder="Full Name" required>
+                <input type="email" id="email" placeholder="Email" required>
+
+                <!-- Password Field -->
+                <div class="password-container">
+                 <input type="password" id="password" placeholder="Password" required>
+                 <i class="fas fa-eye toggle-password" onclick="togglePassword()"></i>
+                </div>
+                <div id="password-validation" class="password-validation"></div> <!-- 🔹 Password Validation Message -->
+
+               <!-- Confirm Password Field -->
+               <div class="password-container">
+               <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+               <i class="fas fa-eye toggle-password" onclick="togglePassword('confirmPassword', this)"></i>
+               </div>
+
+                <button type="submit">Sign Up</button>
+            </form>
+            <p>Already have an account? <a href="login.html">Login here</a></p>
+        </div>
+    </section>
+
+    <script>
+        // ❌ Close Signup Modal
+function closeSignup() {
+    window.location.href = "indexnew.html"; // ✅ Redirect back to home page
+}
+// 🎯 Function to show temporary messages
+function showMessage(message, color, redirect = false) {
+    const messageDiv = document.createElement("div");
+    messageDiv.textContent = message;
+    messageDiv.style.position = "fixed";
+    messageDiv.style.top = "20px";
+    messageDiv.style.left = "50%";
+    messageDiv.style.transform = "translateX(-50%)";
+    messageDiv.style.backgroundColor = color;
+    messageDiv.style.color = "white";
+    messageDiv.style.padding = "10px 20px";
+    messageDiv.style.borderRadius = "5px";
+    messageDiv.style.boxShadow = "0px 4px 10px rgba(0,0,0,0.2)";
+    messageDiv.style.zIndex = "1000";
+    document.body.appendChild(messageDiv);
+
+    // 🕒 Remove message after 1.5 sec (faster)
+    setTimeout(() => {
+        messageDiv.style.opacity = "0";
+        setTimeout(() => messageDiv.remove(), 500);
+    }, 1500);
+
+    // ✅ Redirect after 1.5 sec (faster)
+    if (redirect) {
+        setTimeout(() => {
+            window.location.href = "indexnew.html";
+
+        }, 1500);
+    }
+}
+
+// 📝 Form Validation & Redirect
+document.getElementById("signupForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const role = document.getElementById("userRole").value;
+    const fullName = document.getElementById("fullName").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const confirmPassword = document.getElementById("confirmPassword").value.trim();
+    const validationMessage = document.getElementById("password-validation");
+
+    // 🎯 Basic Input Validation
+    if (!role || !fullName || !email || !password || !confirmPassword) {
+        showMessage("⚠ Please fill out all fields!", "red");
+        return;
+    }
+
+    // 🎯 Corrected Password Validation Regex
+    const regex = /^(?=.*\d)(?=.*[_])(?=.*[!@#$%^&*]).{6,}$/;
+
+    console.log("Checking password:", password); // Debugging line
+
+    if (!regex.test(password)) {
+        validationMessage.style.color = "red";
+        validationMessage.textContent = "⚠ Password must contain at least one number, one '_', and one special symbol.";
+        validationMessage.style.display = "block";
+        return;
+    } else {
+        validationMessage.style.color = "white";
+        validationMessage.textContent = "✔ Strong Password";
+    }
+
+    // 🎯 Confirm Password Check
+    if (password !== confirmPassword) {
+        showMessage("⚠ Passwords do not match!", "red");
+        return;
+    }
+
+    // 🎯 Store user details
+    localStorage.setItem("userSignedUp", "true");
+    localStorage.setItem("userRole", role);
+
+    showMessage("🎉 Signup successful!", "green", true); // ✅ Show success message & Redirect
+});
+// 👁 Toggle Password Visibility
+function togglePassword(fieldId, iconElement) {
+    const passwordField = document.getElementById(fieldId);
+
+    if (passwordField.type === "password") {
+        passwordField.type = "text";
+        iconElement.classList.replace("fa-eye", "fa-eye-slash");
+    } else {
+        passwordField.type = "password";
+        iconElement.classList.replace("fa-eye-slash", "fa-eye");
+    }
+}
+
+    </script>
+
+</body>
+</html>

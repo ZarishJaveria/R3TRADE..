@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Checkout</title>
+    <link rel="stylesheet" href="checkout.css">
+</head>
+<body>
+    <div class="checkout-container">
+        <br>
+        <h1>Order Checkout</h1>
+
+        <!-- Order Summary -->
+        <main>
+            <section class="order-summary">
+                <h2>Order Summary</h2>
+                <!-- Items will be dynamically added here -->
+            </section>
+
+            <!-- Shipping Confirmation -->
+            <section class="confirmation">
+                <h2>Order Placed Successfully!</h2>
+                <p>Your order has been successfully shipped. Thank you for shopping with us!</p>
+                <p>&#x2705; Your order has been successfully shipped!</p>
+                <a href="indexnew.html" class="btn-home" onclick="completeCheckout()">Go to Home</a>
+            </section>
+
+            <!-- Order Tracking Section -->
+            <section class="order-tracking">
+                <h2>Order Tracking</h2>
+                <div class="tracking-container">
+                    <div class="tracking-step completed">
+                        <span class="icon">✅</span>
+                        <p>Order Placed</p>
+                    </div>
+                    <div class="tracking-step completed">
+                        <span class="icon">📦</span>
+                        <p>Shipped</p>
+                    </div>
+                    <div class="tracking-step">
+                        <span class="icon">🚚</span>
+                        <p>Out for Delivery</p>
+                    </div>
+                    <div class="tracking-step">
+                        <span class="icon">🏠</span>
+                        <p>Delivered</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2024 R3Trade. All rights reserved.</p>
+            <p><a href="terms-of-service.html">Privacy Policy & Terms of Service</a></p>
+        </footer>
+    </div>
+
+    <!-- JavaScript to Load Cart Data -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            console.log("Checkout script loaded");
+
+            // Retrieve cart data
+            const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+            console.log("Cart Items at Checkout:", cartItems);
+
+            const summarySection = document.querySelector(".order-summary");
+            if (!summarySection) {
+                console.error("Order summary section not found!");
+                return;
+            }
+
+            summarySection.innerHTML = "<h2>Order Summary</h2>";
+
+            if (cartItems.length === 0) {
+                summarySection.innerHTML += "<p>Your cart is empty.</p>";
+                return;
+            }
+
+            let totalPrice = 0;
+
+            cartItems.forEach((item) => {
+                totalPrice += item.price * item.quantity;
+                summarySection.innerHTML += `
+                    <div class="summary-item">
+                        <img src="${item.image}" alt="${item.name}" width="50">
+                        <p>${item.name} (x${item.quantity})</p>
+                        <p>Price: ₹${(item.price * item.quantity).toFixed(2)}</p>
+                    </div>
+                `;
+            });
+
+            summarySection.innerHTML += `
+                <div class="summary-total">
+                    <p>Total Price: <strong>₹${totalPrice.toFixed(2)}</strong></p>
+                </div>
+            `;
+        });
+
+        // Function to clear the cart after checkout
+        function completeCheckout() {
+            localStorage.removeItem("cartItems");
+        }
+    </script>
+</body>
+</html>

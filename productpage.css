@@ -1,0 +1,217 @@
+/* === Basic Reset and Body Styling === */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* === Header Styling === */
+header {
+  background-color: #4CAF50;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 2px -2px gray;
+}
+
+header .logo img {
+  max-width: 150px;
+}
+
+/* === Main Product Detail and Explore More Container === */
+.product-detail-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 1200px;
+}
+
+/* === Product Detail Styling === */
+.product-detail {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.product-info {
+  display: flex;
+  gap: 20px;
+}
+
+.product-image img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-description h3 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.product-description p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.btn {
+  background-color: #ff9900;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  max-width: 200px;
+  margin-top: 15px;
+}
+
+.btn:hover {
+  background-color: #f7a600;
+}
+
+/* === Explore More Section (Slider) === */
+.explore-more {
+  background-color: #fff;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+/* === Slider Container === */
+.slider-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* === Image Slider === */
+.product-slider {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  width: 100%;
+  margin: auto;
+}
+
+.slider-items {
+  display: flex;
+  flex-wrap: nowrap;
+  transition: transform 0.5s ease-in-out;
+  gap: 20px;
+  min-width: fit-content;
+  will-change: transform;
+}
+
+/* === Product Cards === */
+.product-card {
+  background-color: #f4f4f4;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.product-card img {
+  width: 100%;
+  max-width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+  margin: auto;
+}
+
+/* === Desktop View (4 Images) === */
+@media (min-width: 1200px) {
+  .product-card {
+    flex: 0 0 calc(25% - 20px); /* 4 images in one row */
+    max-width: calc(25% - 20px);
+  }
+}
+
+/* === Laptops & Tablets (3 Images) === */
+@media (max-width: 1199px) {
+  .product-card {
+    flex: 0 0 calc(33.33% - 15px);
+    max-width: calc(33.33% - 15px);
+  }
+}
+
+/* === Tablets (2 Images) === */
+@media (max-width: 768px) {
+  .product-card {
+    flex: 0 0 calc(50% - 10px);
+    max-width: calc(50% - 10px);
+  }
+}
+
+/* === Mobile (1 Image) === */
+@media (max-width: 480px) {
+  .product-card {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+/* === Slider Buttons === */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 20px;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 99;
+  transition: background-color 0.3s ease;
+}
+
+.slider-btn:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.slider-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.slider-btn.left {
+  left: 10px;
+}
+
+.slider-btn.right {
+  right: 10px;
+}
+
+/* === Footer Styling === */
+footer {
+  text-align: center;
+  background-color: #131921;
+  color: white;
+  padding: 15px;
+}

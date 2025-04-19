@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src=" product-add-to-cart.js"></script>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .product-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            border-radius: 5px;
+        }
+        .product-info {
+            margin-top: 20px;
+        }
+        .price {
+            font-size: 24px;
+            color: green;
+            margin: 10px 0;
+        }
+        .btn {
+            background-color: chocolate;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: green;
+        }
+        .explore-section {
+            margin-top: 40px;
+            text-align: center;
+        }
+        .explore-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 10px;
+            gap: 10px;
+        }
+        .explore-item {
+            flex: 0 0 30%;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            background: white;
+            text-align: center;
+            min-width: 200px;
+        }
+        .explore-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .reviews {
+            margin-top: 30px;
+        }
+        .reviews p {
+            background: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+        /* Toast Notification */
+#toast {
+    visibility: hidden;
+    min-width: 250px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px;
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    font-size: 16px;
+}
+
+#toast.show {
+    visibility: visible;
+    animation: fadeInOut 3s ease-in-out;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; bottom: 20px; }
+    20% { opacity: 1; bottom: 30px; }
+    80% { opacity: 1; bottom: 30px; }
+    100% { opacity: 0; bottom: 20px; }
+}
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <img id="product-image" class="product-image" src="" alt="Product Image">
+    <div class="product-info">
+        <h2 id="product-name"></h2>
+        <p id="product-description"></p>
+        <p class="price" id="product-price"></p>
+        <button class="btn">Add to Cart</button>
+    </div>
+</div>
+
+<!-- Reviews Section -->
+<div class="container reviews">
+    <h3>Customer Reviews</h3>
+    <p>⭐⭐⭐⭐☆ - Great quality product! (John Doe)</p>
+    <p>⭐⭐⭐⭐⭐ - Excellent, just as described. (Jane Smith)</p>
+</div>
+
+<!-- Explore More Section -->
+<div class="container explore-section">
+    <h3>Explore More</h3>
+    <div class="explore-slider" id="explore-slider"></div>
+</div>
+<!-- Toast Notification -->
+<div id="toast" class="toast"></div>
+
+<script>
+        function addToCart() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // Get product details from URL parameters
+    const product = getQueryParams();
+
+    if (!product.name || !product.price || !product.image) {
+        alert("Product details are missing!");
+        return;
+    }
+
+    // Add product to the cart
+    cart.push(product);
+
+    // Save updated cart back to localStorage
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    alert(`${product.name} added to cart!`);
+}
+
+  // Function to get URL parameters
+  function getQueryParams() {
+      const params = new URLSearchParams(window.location.search);
+      return {
+          id: params.get('id'),
+          name: decodeURIComponent(params.get('name')),
+          price: params.get('price'),
+          image: params.get('image'),
+          description: decodeURIComponent(params.get('description'))
+      };
+  }
+
+  // Load product details dynamically
+  const product = getQueryParams();
+  document.getElementById("product-image").src = product.image;
+  document.getElementById("product-name").textContent = product.name;
+  document.getElementById("product-description").textContent = product.description;
+  document.getElementById("product-price").textContent = "Price: ₹" + product.price;
+
+  
+
+  // Fetch all products from localStorage (including upcycle)
+  const allExchangeProducts = JSON.parse(localStorage.getItem("allProducts")) || [];
+  const upcycleProducts = JSON.parse(localStorage.getItem("upcycleProducts")) || [];
+
+  // Merge both arrays (exchange + upcycle products)
+const allProducts = [...allExchangeProducts]; // Sirf exchangeProducts rakho
+
+  // Remove the currently viewed product from explore list
+  const filteredProducts = allProducts.filter(p => p.id !== product.id);
+
+  // Select the explore section
+  const exploreSection = document.getElementById("explore-slider");
+
+  // Display explore more section (only 3 items max)
+  filteredProducts.slice(0, 3).forEach(prod => {
+      const item = document.createElement("div");
+      item.classList.add("explore-item");
+      item.innerHTML = `
+          <img src="${prod.image}" alt="${prod.name}">
+          <p><strong>${prod.name}</strong></p>
+          <p>₹${prod.price}</p>
+      `;
+      item.addEventListener("click", () => {
+        window.location.href = `productpage.html?id=${prod.id}&name=${encodeURIComponent(prod.name)}&price=${prod.price}&image=${prod.image}&description=${encodeURIComponent(prod.description)}`;
+    });
+      exploreSection.appendChild(item);
+  });
+
+  // Show message if no products are found
+  if (filteredProducts.length === 0) {
+      exploreSection.innerHTML = "<p>No similar products available.</p>";
+  }
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Address Book - R3 Trade</title>
+    <link rel="stylesheet" href="common.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const addressForm = document.getElementById('address-form');
+            const addressList = document.getElementById('address-list');
+            let addresses = [];
+
+            // Add New Address
+            addressForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('name').value;
+                const phone = document.getElementById('phone').value;
+                const address = document.getElementById('address').value;
+                const city = document.getElementById('city').value;
+                const state = document.getElementById('state').value;
+                const pincode = document.getElementById('pincode').value;
+                const type = document.getElementById('address-type').value;
+
+                const newAddress = { name, phone, address, city, state, pincode, type };
+                addresses.push(newAddress);
+                displayAddresses();
+                addressForm.reset();
+            });
+
+            // Display Saved Addresses
+            function displayAddresses() {
+                addressList.innerHTML = '';
+                addresses.forEach((addr, index) => {
+                    addressList.innerHTML += `
+                        <div class="address-card">
+                            <h4>${addr.name} (${addr.type})</h4>
+                            <p>${addr.address}, ${addr.city}, ${addr.state} - ${addr.pincode}</p>
+                            <p>Phone: ${addr.phone}</p>
+                            <button onclick="editAddress(${index})">Edit</button>
+                            <button onclick="deleteAddress(${index})" class="danger-btn">Delete</button>
+                        </div>`;
+                });
+            }
+
+            // Edit Address
+            window.editAddress = function(index) {
+                const addr = addresses[index];
+                document.getElementById('name').value = addr.name;
+                document.getElementById('phone').value = addr.phone;
+                document.getElementById('address').value = addr.address;
+                document.getElementById('city').value = addr.city;
+                document.getElementById('state').value = addr.state;
+                document.getElementById('pincode').value = addr.pincode;
+                document.getElementById('address-type').value = addr.type;
+                
+                addresses.splice(index, 1);
+                displayAddresses();
+            };
+
+            // Delete Address
+            window.deleteAddress = function(index) {
+                if (confirm("Are you sure you want to delete this address?")) {
+                    addresses.splice(index, 1);
+                    displayAddresses();
+                }
+            };
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="short logo.png" alt="R3 Trade Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="indexnew.html">Home</a></li>
+                <li><a href="account.html">Account</a></li>
+                <li><a href="address.html" class="active">Address Book</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="settings.html">Settings</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="address-section">
+            <h1>Manage Your Addresses</h1>
+
+            <!-- Form to Add New Address -->
+            <form id="address-form" class="address-form">
+                <h2>Add New Address</h2>
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" placeholder="Minakshi Grover" required>
+
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" placeholder="+91 9234589034" required>
+
+                <label for="address">Address:</label>
+                <textarea id="address" placeholder="Street, Locality" required></textarea>
+
+                <label for="city">City:</label>
+                <input type="text" id="city" placeholder="City Name" required>
+
+                <label for="state">State:</label>
+                <input type="text" id="state" placeholder="State Name" required>
+
+                <label for="pincode">Pincode:</label>
+                <input type="text" id="pincode" placeholder="444001" required>
+
+                <label for="address-type">Address Type:</label>
+                <select id="address-type" required>
+                    <option value="Home">Home</option>
+                    <option value="Work">Work</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <button type="submit" class="save-btn">Add Address</button>
+            </form>
+
+            <!-- Display Saved Addresses -->
+            <div id="address-list" class="address-list"></div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 R3Trade. All rights reserved.</p>
+        <p><a href="terms-of-service.html">Privacy Policy & Term Of Services</a>
+            
+    </footer>
+
+</body>
+</html>

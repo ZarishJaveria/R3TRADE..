@@ -1,0 +1,962 @@
+/* General Styles 
+.ball {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: rgb(46, 165, 46);  Green color for the dot 
+    border-radius: 50%;
+    pointer-events: none; Prevents interference with clicks 
+    z-index: 9999;  Ensures it's on top of all elements 
+    transition: transform 0.02s ease;  Smooth movement 
+}*/
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+h1, h2, h3 {
+    color: #444;
+}
+
+p {
+    color: #666;
+}
+
+/* Header Styles */
+header {
+    
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #4CAF50;
+        padding: 20px;
+        position: relative;
+}
+
+/* Floating Account Icon Styles */
+.floating-account-icon {
+    position: fixed;          /* Keeps icon fixed on screen */
+    bottom: 20px;             /* Distance from bottom of screen */
+    right: 20px;              /* Distance from right edge */
+    background-color: #4CAF50; /* Green background */
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;            /* Ensure it's on top of other elements */
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.floating-account-icon i {
+    color: white;
+    font-size: 28px;          /* Icon size */
+}
+
+/* Hover Effect */
+.floating-account-icon:hover {
+    transform: scale(1.1);    /* Slight zoom effect */
+    background-color: #388E3C; /* Darker green on hover */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .floating-account-icon {
+        bottom: 15px;
+        right: 15px;
+        padding: 8px;
+    }
+
+    .floating-account-icon i {
+        font-size: 24px;
+    }
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    height: 100px; /* Replace 100px with the height of the h1 */
+}
+
+.logo img {
+    max-height: 100px; /* Adjust to your desired size */
+    width: auto; /* Keeps the aspect ratio intact */
+}
+
+header h1 {
+    color: #fff;
+    margin: 0;
+}
+
+nav ul li a.active {
+    color: #ff9800;  /* Highlight active link with a distinctive color */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    font-weight: bold;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    position: relative; /* Needed for dropdown */
+}
+
+.search-bar input[type="text"] {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 200px;
+}
+
+.search-bar button {
+    background-color: #ff9800;
+    border: none;
+    padding: 8px 12px;
+    margin-left: 5px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #e68900;
+}
+
+/* Dropdown Styles */
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+    z-index: 100;
+}
+
+/* Default Options (Exchange, Sell, Upcycle) */
+.default-options div {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+
+.default-options div:hover {
+    background: #f0f0f0;
+}
+
+/* Search Suggestions */
+.search-suggestions {
+    display: none;
+}
+
+.search-suggestions div {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+
+.search-suggestions div:hover {
+    background: #f0f0f0;
+}
+
+/* "No Results Found" */
+.no-results {
+    padding: 10px;
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Most Popular Badge */
+.popular-badge {
+    font-size: 12px;
+    color: white;
+    background: red;
+    padding: 3px 6px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+/* Keep Login Button Styles the Same */
+.login-btn {
+    background-color: #ff9800;
+    padding: 8px 12px;
+    margin-left: 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #e68900;
+}
+
+/* User Icon and Dropdown Menu 
+.account-menu {
+    position: relative;
+    display: inline-block;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+#accountIcon {
+    font-size: 28px;
+    color: #333;
+    transition: color 0.3s;
+}
+
+#accountIcon:hover {
+    color: #007bff; /* Add a nice hover effect 
+}
+
+/* Dropdown Menu 
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 40px; /* Adjust dropdown position 
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    min-width: 150px;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 16px;
+    color: #333;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 0.2s;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Add a subtle animation 
+.dropdown-menu {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Media Query for User Icon on Mobile Devices 
+@media (max-width: 768px) {
+    /* Adjust user icon size and layout for mobile 
+    #accountIcon {
+        font-size: 24px;
+        margin-top: 10px;
+    }
+
+    /* Mobile Dropdown positioning 
+    .dropdown-menu {
+        top: 35px;
+        right: -10px;
+        min-width: 120px;
+    }
+
+    /* Make the account menu more touch-friendly 
+    .account-menu {
+        margin-left: 10px;
+    }
+}
+*/
+
+
+/* === Slider Container === */
+.slider-container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 50px auto;
+    overflow: hidden;
+    position: relative;
+    border-radius: 12px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+   background: linear-gradient(135deg, #e8f5e9, #c8e6c9);  /* 👈 Light Green Gradient */
+    padding: 20px; /* 👈 Extra spacing for better layout */
+
+}
+
+/* === Image Slider === */
+.image-slider {
+    display: flex;
+    gap: 15px; /* 👈 Ensure gap is set */
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    white-space: nowrap;
+    scrollbar-width: none;
+    max-width: 100%; /* 👈 Fix invalid value */
+    padding-bottom: 10px;
+}
+
+.image-slider::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari */
+}
+
+/* === Individual Slide === */
+.slide {
+    min-width: calc(25% - 15px); /* 👈 4 images in a row */
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.slide img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+/* === Navigation Buttons === */
+.nav-buttons {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.nav-buttons button {
+    background: linear-gradient(135deg, #004d00, #008000); /* 👈 Dark to Light Green */
+    color: white;
+    border: none;
+    padding: 10px 14px; /* 👈 Slightly smaller padding */
+    cursor: pointer;
+    font-size: 18px; /* 👈 Reduced font-size */
+    border-radius: 50%;
+    transition: background 0.4s ease-in-out, transform 0.2s;    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.nav-buttons button:hover {
+    background: linear-gradient(135deg, #008000, #00cc00);    color: black;
+    transform: scale(1.1);
+}
+
+/* === Arrow Icons === */
+.prev::before, .next::before {
+    font-size: 20px; /* 👈 Arrows made smaller */
+}
+
+.prev::before {
+    content: '⮜';
+}
+
+.next::before {
+    content: '⮞';
+}
+
+/* === Button Positioning === */
+.prev {
+    position: absolute;
+    left: -30px; /* 👈 Adjusted positioning */
+}
+
+.next {
+    position: absolute;
+    right: 10px; /* 👈 Adjusted positioning */
+}
+
+/* === Responsive Design === */
+@media (max-width: 768px) {
+    .slide {
+        min-width: calc(50% - 10px);
+    }
+
+    .prev {
+        left: -15px;
+    }
+
+    .next {
+        right: -15px;
+    }
+}
+.image-slider {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto; /* Allow horizontal scroll */
+    scroll-behavior: smooth;
+    white-space: nowrap; /* Prevent line breaks */
+    padding-bottom: 10px;
+}
+
+@media (max-width: 480px) {
+    .slide {
+        min-width: 80%; /* Show more of the next image */
+    }
+
+    .prev, .next {
+        display: block; /* Ensure buttons are visible */
+        font-size: 24px; /* Make buttons larger for touch */
+        z-index: 20; /* Ensure they appear over the images */
+    }
+
+    .prev {
+        left: 10px; /* Keep button within the view */
+    }
+
+    .next {
+        right: 10px; /* Keep button within the view */
+    }
+}
+
+.nav-buttons {
+    z-index: 20; /* Higher than images */
+}
+
+/* Hero Section Styles */
+.hero {
+    background-image: linear-gradient(to right, #6de972, #0b8611cb);
+    margin-top: 60px;
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.hero .btn {
+    padding: 15px 30px;
+    background-color: #ff9800;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* Services Section Styles */
+.services {
+    background-color: #fff;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.services h2 {
+    margin-bottom: 40px;
+    font-size: 28px;
+    color: #333;
+}
+
+/* Service Cards container */
+.service-cards {
+    display: flex;
+    flex-wrap: wrap; /* Allows the cards to wrap on smaller screens */
+    justify-content: space-around;
+    gap: 20px; /* Adds space between the cards */
+}
+
+/* Individual card styles */
+.card {
+    background-color: #81C784;
+    padding: 30px;
+    width: 25%; /* Default width on larger screens */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #fff;
+    text-align: center;
+    transition: transform 0.3s ease; /* Add smooth transition on hover */
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.card p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+/* Button styles */
+.card .btn {
+    padding: 10px 20px;
+    background-color: #ff9800;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+}
+
+/* Hover effect for cards */
+.card:hover {
+    transform: scale(1.05); /* Grows slightly on hover */
+}
+
+/* Media Query for tablets (max-width: 768px) */
+@media (max-width: 768px) {
+    .card {
+        width: 45%; /* Cards take 45% of the container on tablets */
+    }
+}
+
+/* Media Query for mobile devices (max-width: 480px) */
+@media (max-width: 480px) {
+    .service-cards {
+        flex-direction: column; /* Stack cards vertically on mobile */
+        align-items: center; /* Center the cards */
+    }
+
+    .card {
+        width: 100%; /* Full width on mobile */
+        margin-bottom: 20px; /* Adds space between the stacked cards */
+    }
+}
+
+/* Highlight Upcycling Card */
+.card-2 {
+    position: relative; /* Needed for pseudo-elements */
+    border: 3px solid #ffeb3b; /* Yellow border for emphasis */
+    box-shadow: 0 4px 12px rgba(255, 193, 7, 0.5); /* Subtle glow effect */
+    transform: scale(1.05); /* Slightly bigger by default */
+}
+
+/* Add "Most Popular" Ribbon */
+.card-2::before {
+    content: "🔥 Most Popular";
+    position: absolute;
+    top: 10px; /* Moves slightly inside the card */
+    left: -15px; /* More tilted and inside */
+    background: #ff9800; /* Orange ribbon */
+    color: white;
+    padding: 6px 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 14px;
+    transform: rotate(-20deg); /* More tilt */
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Increase Font Size */
+.card-2 h3 {
+    font-size: 26px; /* Slightly larger */
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Animated Hover Effect */
+.card-2:hover {
+    animation: bounce 0.5s ease-in-out;
+}
+
+/* Bounce Animation */
+@keyframes bounce {
+    0%, 100% { transform: scale(1.05); }
+    50% { transform: scale(1.1); }
+}
+
+
+.info-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background: #e8f5e9;
+    border: 3px solid #a5d6a7;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    width: 100%; /* Responsive width */
+    max-width: 600px;  /* Maintain max width */
+    height: auto; /* Allow height to adjust */
+    margin: 40px auto;
+    transition: transform 0.2s ease-in-out;
+    flex-wrap: wrap;
+}
+
+.info-card:hover {
+    transform: scale(1.02);
+}
+
+/* Image Section */
+.image-section {
+    flex: 1;
+    min-width: 150px;
+    overflow: hidden;
+    border-right: 3px solid #a5d6a7;
+    margin-left: 10px;
+}
+
+.image-section img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+}
+
+/* Info Section */
+.info-section {
+    flex: 2;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.info-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #2e7d32;
+}
+
+.info-section p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #4caf50;
+    margin-bottom: 20px;
+}
+
+/* Stats Section */
+.stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.stat {
+    text-align: center;
+    flex: 1;
+}
+
+.stat h3 {
+    font-size: 1.5rem;
+    color: #2e7d32;
+    margin-bottom: 5px;
+}
+
+.stat p {
+    font-size: 0.9rem;
+    color: #388e3c;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .info-card {
+        flex-direction: column;
+        width: 95%;
+        max-width: none; /* Remove fixed max-width */
+    }
+
+    .image-section {
+        border-right: none;
+        border-bottom: 3px solid #a5d6a7;
+        width: 100%;
+    }
+}
+
+
+/* Reviews Section */
+#reviews {
+    padding: 50px;
+    text-align: center; /* Center the heading */
+}
+
+.review {
+    display: flex;                     /* Use flexbox for alignment */
+    justify-content: center;           /* Center the reviews */
+    margin-bottom: 20px;               /* Space between reviews */
+}
+
+.review-header {
+    display: flex;                     /* Use flexbox for reviewer details */
+    align-items: flex-start;           /* Align items at the start */
+    margin-bottom: 15px;
+    max-width: 600px;                 /* Limit the width of the review box */
+    margin: 0 auto;                   /* Center the review box horizontally */
+}
+
+.review-image {
+    width: 60px;                       /* Set fixed width for reviewer image */
+    height: 60px;                      /* Set fixed height for reviewer image */
+    border-radius: 50%;                /* Round shape for profile image */
+    margin-right: 15px;                /* Space between image and text */
+}
+
+.review-details {
+    display: flex;
+    flex-direction: column;            /* Stack name and review vertically */
+    align-items: flex-start;           /* Align text to the left */
+    text-align: left;                  /* Ensure text aligns to the left */
+}
+
+.stars img {
+    width: 20px;                       /* Set size for star images */
+    height: 20px;                      /* Set size for star images */
+    margin-right: 2px;                 /* Space between stars */
+}
+
+.review p {
+    font-size: 1rem;                  /* Font size for review text */
+    color: #555;                       /* Color for review text */
+    margin-top: 10px;                  /* Space above review text */
+}
+
+/* Feedback Box Styles */
+.feedback-box {
+    background-color: #f9f9f9;        /* Light background color */
+    border: 1px solid #ccc;           /* Light border */
+    border-radius: 8px;               /* Rounded corners */
+    padding: 60px;                    /* Padding inside the box */
+    margin-top: 20px;                 /* Space above the feedback box */
+    max-width: 400px;                 /* Limit the width of the feedback box */
+    margin-left: auto;                /* Center horizontally */
+    margin-right: auto;               /* Center horizontally */
+}
+
+.feedback-box h3 {
+    margin-bottom: 15px;              /* Space below the heading */
+}
+
+.feedback-input {
+    width: 100%;                      /* Full width for the textarea */
+    height: 80px;                     /* Fixed height for the textarea */
+    padding: 10px;                    /* Padding inside the textarea */
+    border: 1px solid #ccc;           /* Border style */
+    border-radius: 5px;               /* Rounded corners */
+    resize: none;                     /* Disable resizing */
+}
+
+.submit-feedback {
+    background-color: #007bff;        /* Button background color */
+    color: white;                     /* Text color */
+    border: none;                     /* Remove border */
+    border-radius: 5px;               /* Rounded corners */
+    padding: 10px 15px;               /* Padding for the button */
+    cursor: pointer;                   /* Cursor pointer on hover */
+    margin-top: 10px;                 /* Space above the button */
+}
+
+.submit-feedback:hover {
+    background-color: #0056b3;        /* Darker button on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .review {
+       flex: 1 1 30%;
+        flex-direction: column;         /* Stack items on top of each other */
+        align-items: center;            /* Center align for smaller screens */
+    }
+    
+    .review-header {
+        flex-direction:  row;  /* Keep row layout on larger screens */
+        
+    }
+
+    .review-image {
+        margin-bottom: 10px;            /* Add space below image for smaller screens */
+    }
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+footer a {
+    color: #ff9800;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+
+.post-section {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.post-section h2 {
+    color: #2e7d32;
+}
+
+.post-section input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.preview img {
+    max-width: 100%;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.post-section button {
+    background-color: #ff9800;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.post-section button:hover {
+    background-color: #e68900;
+}
+
+/*
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.background-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    filter: blur(10px);
+    transform: scale(1);
+}
+
+.signup-container {
+    background: rgba(0, 128, 0, 0.4);
+    padding: 20px;
+    width: 330px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    z-index: 1000;
+}
+
+.signup-container h2 {
+    margin-bottom: 15px;
+    font-size: 22px;
+    color: white;
+}
+
+.signup-container select,
+.signup-container input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    outline: none;
+    font-size: 14px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.signup-container select {
+    background: rgba(255, 255, 255, 0.5);
+    color: black;
+}
+
+.signup-container input::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.password-container {
+    position: relative;
+    width: 100%;
+}
+
+.password-container input {
+    width: 100%;
+    padding-right: 40px;
+    box-sizing: border-box;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    color: #f5f5f5;
+    transition: color 0.3s ease;
+}
+
+.toggle-password:hover {
+    color: #ccc;
+}
+
+.signup-container button {
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(45deg, #4CAF50, #388E3C);
+    color: white;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.signup-container button:hover {
+    background: linear-gradient(45deg, #388E3C, #2E7D32);
+}
+*/

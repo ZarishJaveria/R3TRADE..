@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R3 Trade</title>
+    <link rel="stylesheet" href="indexnew.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   <script src="navbar.js" defer></script>
+</head>
+<body>
+    <!-- Header Section -->
+     <header>
+       
+      <!-- <div class="ball"></div>-->
+    <script src="scriptnew.js"></script>  
+
+    <!-- Floating Account Icon -->
+<div class="floating-account-icon">
+    <a href="account.html" title="My Account">
+        <i class="fas fa-user-circle"></i>
+    </a>
+</div>
+
+    
+        <div class="logo">
+            <img src="short logo.png" alt="Barter Exchange Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="indexnew.html">Home</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="contactus.html">Contact</a></li>
+                <li>
+                    <a href="wishlist.html" class="wishlist-icon">
+                        <i class="fa-regular fa-heart"></i>
+                    </a>
+                </li>                                       
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+             
+        <!-- Search Bar and Login -->
+<div class="header-actions">
+    <div class="search-bar">
+        <input type="text" placeholder="Search..." id="search" autocomplete="off">
+        <button type="button" id="searchButton">Search</button>
+        <div class="dropdown" id="dropdown">
+            <div class="default-options">
+                <div data-url="xchange.html">Exchange Section</div>
+                <div data-url="sell.html">Sell Section</div>
+                <div data-url="upcycle.html">
+                    Upcycle Section <span class="popular-badge">Most Popular</span>
+                </div>
+            </div>
+            <div class="search-suggestions"></div>
+        </div>
+    </div>
+    <a href="login.html" class="login-btn">Login</a>
+
+  <!--  <div class="account-menu">
+        <i class="fas fa-user-circle" id="accountIcon"></i>
+        <div class="dropdown-menu" id="dropdownMenu">
+            <a href="settings.html">Settings</a>
+            <a href="help.html">Help</a>
+            <a href="account.html">Account</a>
+        </div>
+    </div>-->
+    
+    
+</div>
+            </header>      
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2> Recycle karo, Duniya Badlo!</h2>
+            <p>Join our community where you can trade and recycle items for a sustainable future.</p>
+            <a href="donate.html" class="btn"> Donate </a>
+        </div>
+    </section>
+
+    <div class="slider-container">
+        <div class="image-slider" id="slider">
+            <a href="upcycle.html" class="slide"><img src="tyre.jpg" alt="Tyre planter"></a>
+            <a href="upcycle.html" class="slide"><img src="cane.jpg" alt="Can Table"></a>
+            <a href="upcycle.html" class="slide"><img src="jeans2.jpg" alt="Denim Hanger"></a>
+            <a href="xchange.html" class="slide"><img src="sewingxchange1.jpg" alt="Sewing Machine"></a>
+            <a href="xchange.html" class="slide"><img src="clockschange.jpg" alt="Wall Clock"></a>
+            <a href="sell.html" class="slide"><img src="cementsell.jpeg" alt="Cement"></a>
+            <a href="sell.html" class="slide"><img src="bag3.jpg" alt="Bag"></a>
+            <a href="sell.html" class="slide"><img src="bag2.jpg" alt="Pouch"></a>
+            <a href="xchange.html" class="slide"><img src="phone.jpg" alt="Old telephone">  </a>
+            <a href="xchange.html" class="slide"><img src="glass.jpg" alt="Glass">  </a>
+        </div>
+        <div class="nav-buttons">
+            <button class="prev" onclick="scrollSlider(-1)">&#10094;</button>
+            <button class="next" onclick="scrollSlider(1)">&#10095;</button>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section class="services">
+        <h2>Our Services</h2>
+        <div class="service-cards">
+            <div class="card card-1">
+                <h3>Exchange </h3>
+                <p>Exchange your items with others and get what you need. Exchange each kind of stuff whether its a raw material or furnished product. whether its pretty old or only used some times only.</p>
+                <a href="xchange.html" class="btn">Explore</a>
+            </div>
+            <div class="card card-2">
+                <h3>Upcycling </h3>
+                <p>Upcycle your excess waste by giving it to a local artist, who can transform it into something new and creative.
+                     You’ll only pay for the labor, and your discarded materials will get a fresh start as unique products, 
+                     turning waste into art while supporting local talent.</p>
+                <a href="upcycle.html" class="btn">Explore</a>
+            </div>
+            <div class="card card-3">
+                <h3>Sell</h3>
+                <p>Sell your items directly to other customers, whether it's raw waste like wood, bricks, cement, 
+                    or finished products like clothing, shoes, and more. You can even sell electronic waste.
+                     By doing so, you'll not only clear out unwanted items but also provide valuable resources to others,
+                      benefiting the community as resources become increasingly scarce.</p>
+                <a href="sell.html" class="btn">Explore</a>
+            </div>
+        </div>
+    </section>
+    
+    <div class="info-card">
+        <div class="image-section">
+            <img src="r3.jpg" alt="R3 Trade Image">
+        </div>
+        <div class="info-section">
+            <h2>R3 Trade Platform</h2>
+            <p>Empowering sustainable living through recycling and trading. Join our growing community today!</p>
+            <div class="stats">
+                <div class="stat">
+                    <h3>4.9</h3>
+                    <p>Rating</p>
+                </div>
+                <div class="stat">
+                    <h3>15,000+</h3>
+                    <p>Active Users</p>
+                </div>
+                <div class="stat">
+                    <h3>60+</h3>
+                    <p>Countries</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Reviews Section -->
+<section id="reviews">
+    <h2>Customer Reviews</h2>
+
+    
+    <div class="review">
+        <div class="review-header">
+            <img src="customer2.png" alt="Customer 2" class="review-image">
+            <div class="review-details">
+                <h3>Masira Firdous</h3>
+                <div class="stars">
+                    <img src="review.png" alt="5 Stars">
+                </div>
+                <p>Excellent service and quality. Highly recommend!</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="review">
+        <div class="review-header">
+            <img src="customer3.png" alt="Customer 3" class="review-image">
+            <div class="review-details">
+                <h3>Syed Ammar</h3>
+                <div class="stars">
+                    <img src="review.png" alt="4 Stars">
+                </div>
+                <p>Really unique products. I'm definitely buying again.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feedback Box -->
+    <div class="feedback-box">
+        <h3>Leave Your Feedback</h3>
+        <textarea placeholder="Your feedback..." class="feedback-input"></textarea>
+        <button class="submit-feedback">Submit</button>
+    </div>
+</section>
+
+
+
+
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 R3Trade. All rights reserved.</p>
+        <p><a href="terms-of-service.html">Privacy Policy & Term Of Services</a>
+            
+    </footer>
+    
+<!-- Signup Modal 
+<section id="signup" style="display: none;">
+    <div class="signup-container">
+        <h2>Create an Account</h2>
+        <form id="signupForm">
+            <!-- Role Selection (Important for JavaScript) 
+            <select id="roleSelect" required>
+                <option value="">Select Role</option>
+                <option value="customer">Customer</option>
+                <option value="artist">Artist</option>
+            </select>
+
+            <input type="text" id="fullName" placeholder="Full Name" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="text" id="username" placeholder="Username" required>
+
+            <!-- Password with Eye Icon 
+            <div class="password-container">
+                <input type="password" id="password" placeholder="Password" required>
+                <i class="fas fa-eye toggle-password" onclick="togglePassword()"></i>
+            </div>
+
+            <button type="submit">Sign Up</button>
+        </form>
+        <p>Already have an account? <a href="login.html">Login here</a></p>
+    </div>
+</section> -->
+
+
+</body>
+</html>
